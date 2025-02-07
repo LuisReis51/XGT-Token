@@ -1,0 +1,48 @@
+{
+  "project": {
+    "name": "XG Token Website",
+    "description": "A website providing connectivity to wallet mining capabilities for the XG Token (XGT) with a beautiful dark theme layout.",
+    "version": "1.0.0",
+    "assets": {
+      "css": [
+        "assets/css/styles.css"
+      ],
+      "js": [
+        "assets/js/scripts.js"
+      ],
+      "images": [
+        "assets/images"
+      ]
+    },
+    "components": [
+      "components/header.html",
+      "components/footer.html",
+      "components/wallet-mining.html"
+    ],
+    "pages": [
+      "pages/index.html",
+      "pages/about.html",
+      "pages/contact.html"
+    ],
+    "settings": {
+      "theme": "dark",
+      "layout": "responsive",
+      "navigation": {
+        "main": [
+          {
+            "label": "Home",
+            "link": "pages/index.html"
+          },
+          {
+            "label": "About",
+            "link": "pages/about.html"
+          },
+          {
+            "label": "Contact",
+            "link": "pages/contact.html"
+          }
+        ]
+      }
+    }
+  }
+}

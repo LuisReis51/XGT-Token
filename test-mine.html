@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XGT Token Testing Interface</title>
+    <script src="https://unpkg.com/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 20px auto; padding: 20px; }
+        .section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        button { margin: 5px; padding: 10px; }
+        .status { margin-top: 10px; padding: 10px; border-radius: 5px; }
+        .error { background: #ffebee; color: #d32f2f; padding: 10px; margin: 5px 0; }
+        .success { background: #e8f5e9; color: #2e7d32; padding: 10px; margin: 5px 0; }
+        input { padding: 5px; margin: 5px; width: 300px; }
+    </style>
+</head>
+<body>
+    <h1>XGT Token Testing Interface (BSC Testnet)</h1>
+    
+    <div class="section">
+        <h2>1. Connection</h2>
+        <button onclick="connectWallet()">Connect Wallet</button>
+        <div>Status: <span id="connection-status">Not Connected</span></div>
+        <div>Address: <span id="wallet-address">-</span></div>
+        <div>BNB Balance: <span id="bnb-balance">-</span> BNB</div>
+        <div>XGT Balance: <span id="wallet-balance">-</span> XGT</div>
+    </div>
+
+    <div class="section">
+        <h2>2. Token Information</h2>
+        <button onclick="checkTokenInfo()">Check Token Info</button>
+        <div id="token-info"></div>
+    </div>
+
+    <div class="section">
+        <h2>3. Mining</h2>
+        <button onclick="checkLastMined()">Check Last Mined</button>
+        <button onclick="mineXGT()">Mine XGT</button>
+        <div id="mining-status"></div>
+    </div>
+
+    <div class="section">
+        <h2>4. Transfer</h2>
+        <input type="text" id="transfer-address" placeholder="Recipient Address (0x...)">
+        <input type="number" id="transfer-amount" placeholder="Amount of XGT">
+        <button onclick="transfer()">Transfer XGT</button>
+        <div id="transfer-status"></div>
+    </div>
+
+    <div class="section">
+        <h2>5. Check Any Address Balance</h2>
+        <input type="text" id="check-address" placeholder="Enter address to check balance (0x...)">
+        <button onclick="checkBalance()">Check Balance</button>
+        <div id="balance-status"></div>
+    </div>
+
+    <script>
+        const XGT_ADDRESS = '0xcF9C2Cce6082787131fdbe727cff544942391290';
+        const XGT_ABI = [
+            "function name() view returns (string)",
+            "function symbol() view returns (string)",
+            "function decimals() view returns (uint8)",
+            "function totalSupply() view returns (uint256)",
+            "function balanceOf(address) view returns (uint256)",
+            "function transfer(address, uint256) returns (bool)",
+            "function mine() public",
+            "function lastMinedBlockByMiner(address) view returns (uint256)",
+            "function blockReward() view returns (uint256)",
+            "function maxSupply() view returns (uint256)"
+        ];
+
+        let provider;
+        let signer;
+        let contract;
+        let isConnected = false;
+
+        // Handle MetaMask Events
+        if (window.ethereum) {
+            window.ethereum.on('accountsChanged', function (accounts) {
+                if (accounts.length === 0) {
+                    // User disconnected
+                    handleDisconnect();
+                } else {
+                    // User switched accounts
+                    connectWallet();
+                }
+            });
+
+            window.ethereum.on('chainChanged', function (chainId) {
+                // Chain changed, reconnect
+                connectWallet();
+            });
+        }
+
+        function handleDisconnect() {
+            provider = null;
+            signer = null;
+            contract = null;
+            isConnected = false;
+            document.getElementById('connection-status').textContent = 'Not Connected';
+            document.getElementById('wallet-address').textContent = '-';
+            document.getElementById('bnb-balance').textContent = '-';
+            document.getElementById('wallet-balance').textContent = '-';
+        }
+
+        async function ensureConnected() {
+            if (!isConnected || !provider || !signer || !contract) {
+                await connectWallet();
+            }
+            if (!isConnected) {
+                throw new Error("Please connect your wallet first");
+            }
+            // Ensure we're on BSC Testnet
+            const network = await provider.getNetwork();
+            if (network.chainId !== 97) {
+                throw new Error("Please switch to BSC Testnet (Chain ID: 97)");
+            }
+        }
+
+        function clearStatus(elementId) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = '';
+        }
+
+        async function log(elementId, message, isError = false) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<div class="${isError ? 'error' : 'success'}">${message}</div>` + element.innerHTML;
+            console.log(message);
+        }
+
+        async function connectWallet() {
+            try {
+                clearStatus('connection-status');
+                
+                if (!window.ethereum) {
+                    throw new Error("MetaMask not found! Please install MetaMask first.");
+                }
+
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                signer = provider.getSigner();
+                contract = new ethers.Contract(XGT_ADDRESS, XGT_ABI, signer);
+                
+                const address = await signer.getAddress();
+                document.getElementById('wallet-address').textContent = address;
+                
+                // Check if we're on BSC Testnet
+                const network = await provider.getNetwork();
+                if (network.chainId !== 97) {
+                    throw new Error('Please switch to BSC Testnet (Chain ID: 97)');
+                }
+
+                isConnected = true;
+                document.getElementById('connection-status').textContent = 'Connected';
+                await updateBalance();
+                log('connection-status', 'Successfully connected!');
+            } catch (error) {
+                handleDisconnect();
+                log('connection-status', 'Error: ' + error.message, true);
+            }
+        }
+
+        async function updateBalance() {
+            try {
+                await ensureConnected();
+                const address = await signer.getAddress();
+                
+                // Update XGT balance
+                const balance = await contract.balanceOf(address);
+                document.getElementById('wallet-balance').textContent = ethers.utils.formatEther(balance);
+                
+                // Update BNB balance
+                const bnbBalance = await provider.getBalance(address);
+                document.getElementById('bnb-balance').textContent = ethers.utils.formatEther(bnbBalance);
+            } catch (error) {
+                log('connection-status', 'Error updating balance: ' + error.message, true);
+            }
+        }
+
+        async function checkTokenInfo() {
+            try {
+                clearStatus('token-info');
+                await ensureConnected();
+                
+                const info = document.getElementById('token-info');
+                info.innerHTML = 'Loading...';
+                
+                const name = await contract.name();
+                const symbol = await contract.symbol();
+                const totalSupply = await contract.totalSupply();
+                const maxSupply = await contract.maxSupply();
+                const blockReward = await contract.blockReward();
+                
+                info.innerHTML = `
+                    <div>Name: ${name}</div>
+                    <div>Symbol: ${symbol}</div>
+                    <div>Total Supply: ${ethers.utils.formatEther(totalSupply)} XGT</div>
+                    <div>Max Supply: ${ethers.utils.formatEther(maxSupply)} XGT</div>
+                    <div>Mining Reward: ${ethers.utils.formatEther(blockReward)} XGT</div>
+                `;
+            } catch (error) {
+                log('token-info', 'Error: ' + error.message, true);
+            }
+        }
+
+        async function checkLastMined() {
+            try {
+                clearStatus('mining-status');
+                await ensureConnected();
+                
+                const address = await signer.getAddress();
+                const lastMined = await contract.lastMinedBlockByMiner(address);
+                const currentBlock = await provider.getBlockNumber();
+                const blocksSince = currentBlock - lastMined;
+                
+                log('mining-status', `
+                    Last mined block: ${lastMined}
+                    Current block: ${currentBlock}
+                    Blocks since last mine: ${blocksSince}
+                    Can mine: ${blocksSince >= 5 ? 'Yes' : 'No, wait ' + (5 - blocksSince) + ' more blocks'}
+                `);
+            } catch (error) {
+                log('mining-status', 'Error: ' + error.message, true);
+            }
+        }
+
+        async function mineXGT() {
+            try {
+                clearStatus('mining-status');
+                await ensureConnected();
+                
+                const tx = await contract.mine();
+                log('mining-status', 'Mining transaction sent: ' + tx.hash);
+                
+                await tx.wait();
+                log('mining-status', 'Mining successful!');
+                
+                await updateBalance();
+            } catch (error) {
+                log('mining-status', 'Mining error: ' + error.message, true);
+            }
+        }
+
+        async function transfer() {
+            try {
+                clearStatus('transfer-status');
+                await ensureConnected();
+                
+                const to = document.getElementById('transfer-address').value;
+                const amount = document.getElementById('transfer-amount').value;
+                
+                if (!to || !amount) {
+                    throw new Error('Please fill in both address and amount');
+                }
+                
+                if (!ethers.utils.isAddress(to)) {
+                    throw new Error('Invalid address format. Make sure it starts with 0x');
+                }
+
+                // Check BNB balance first
+                const address = await signer.getAddress();
+                const bnbBalance = await provider.getBalance(address);
+                if (bnbBalance.lt(ethers.utils.parseEther("0.001"))) {
+                    throw new Error('Not enough BNB for gas. You need at least 0.001 BNB');
+                }
+                
+                // Estimate gas with a lower limit
+                const gasLimit = await contract.transfer.estimateGas(to, ethers.utils.parseEther(amount), {
+                    gasLimit: 100000 // Set a reasonable gas limit
+                }).catch(error => {
+                    throw new Error('Gas estimation failed. Make sure you have enough XGT tokens and BNB for gas');
+                });
+                
+                const tx = await contract.transfer(to, ethers.utils.parseEther(amount), {
+                    gasLimit: gasLimit.mul(12).div(10) // Add 20% buffer to gas estimate
+                });
+                log('transfer-status', 'Transfer transaction sent: ' + tx.hash);
+                
+                await tx.wait();
+                log('transfer-status', 'Transfer successful!');
+                
+                await updateBalance();
+            } catch (error) {
+                log('transfer-status', 'Transfer error: ' + error.message, true);
+            }
+        }
+
+        async function checkBalance() {
+            try {
+                clearStatus('balance-status');
+                await ensureConnected();
+                
+                const address = document.getElementById('check-address').value;
+                
+                if (!ethers.utils.isAddress(address)) {
+                    throw new Error('Invalid address format. Make sure it starts with 0x');
+                }
+                
+                const balance = await contract.balanceOf(address);
+                log('balance-status', `Balance for ${address}: ${ethers.utils.formatEther(balance)} XGT`);
+            } catch (error) {
+                log('balance-status', 'Error: ' + error.message, true);
+            }
+        }
+
+        // Try to connect automatically if previously connected
+        if (window.ethereum && window.ethereum.selectedAddress) {
+            connectWallet();
+        }
+    </script>
+</body>
+</html>

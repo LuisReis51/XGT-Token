@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XGT Logo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .logo-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #eee;
+            margin: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            background: #1565C0;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <h2>XGT Shield Logo</h2>
+        <canvas id="logo" width="300" height="300"></canvas>
+        <br>
+        <button onclick="download()">Download PNG</button>
+    </div>
+
+    <script>
+        const colors = {
+            primary: '#1565C0',
+            secondary: '#2E7D32',
+            accent: '#FFC107',
+            light: '#FFFFFF',
+            dark: '#263238'
+        };
+
+        function drawShield(ctx, x, y, width, height) {
+            ctx.beginPath();
+            ctx.moveTo(x, y - height/2);
+            ctx.lineTo(x + width/2, y - height*0.3);
+            ctx.lineTo(x + width*0.4, y + height/2);
+            ctx.lineTo(x, y + height*0.4);
+            ctx.lineTo(x - width*0.4, y + height/2);
+            ctx.lineTo(x - width/2, y - height*0.3);
+            ctx.closePath();
+            
+            // Shield gradient
+            const gradient = ctx.createLinearGradient(x - width/2, y - height/2, x + width/2, y + height/2);
+            gradient.addColorStop(0, colors.primary);
+            gradient.addColorStop(1, colors.secondary);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            ctx.strokeStyle = colors.accent;
+            ctx.lineWidth = 3;
+            ctx.stroke();
+        }
+
+        function drawSword(ctx, x, y, length, width, angle) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            
+            // Blade
+            ctx.beginPath();
+            ctx.moveTo(0, -length*0.7);
+            ctx.lineTo(width*0.15, length*0.1);
+            ctx.lineTo(-width*0.15, length*0.1);
+            ctx.closePath();
+            ctx.fillStyle = '#E0E0E0';
+            ctx.fill();
+            ctx.strokeStyle = '#BDBDBD';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Handle
+            ctx.fillStyle = colors.accent;
+            ctx.fillRect(-width*0.1, length*0.1, width*0.2, length*0.2);
+            
+            // Guard
+            ctx.fillRect(-width*0.3, length*0.05, width*0.6, width*0.1);
+            
+            ctx.restore();
+        }
+
+        function drawGoldRing(ctx, x, y, radius) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            
+            const gradient = ctx.createLinearGradient(x - radius, y - radius, x + radius, y + radius);
+            gradient.addColorStop(0, '#FFD700');
+            gradient.addColorStop(0.5, '#FFF8E1');
+            gradient.addColorStop(1, '#FFD700');
+            
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = radius * 0.1;
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.arc(x, y, radius * 0.95, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(255, 215, 0, 0.3)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+
+        function drawLogo() {
+            const canvas = document.getElementById('logo');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+            const c = w/2;
+            
+            // Clear canvas
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, w, h);
+            
+            // Draw shield
+            drawShield(c, c, w*0.6, h*0.7);
+            
+            // Draw crossed swords
+            drawSword(ctx, c, c, w*0.4, w*0.1, -Math.PI/4);
+            drawSword(ctx, c, c, w*0.4, w*0.1, Math.PI/4);
+            
+            // Draw gold ring
+            drawGoldRing(ctx, c, c, w*0.45);
+            
+            // XGT text
+            ctx.font = 'bold ' + w*0.15 + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.strokeStyle = colors.light;
+            ctx.lineWidth = w*0.01;
+            ctx.strokeText('XGT', c, c + h*0.1);
+            ctx.fillStyle = colors.accent;
+            ctx.fillText('XGT', c, c + h*0.1);
+        }
+
+        function download() {
+            const canvas = document.getElementById('logo');
+            const link = document.createElement('a');
+            link.download = 'xgt-logo.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Draw logo when page loads
+        window.onload = drawLogo;
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XGT Logo Generator</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+            margin: 20px;
+        }
+        .controls {
+            margin: 20px;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button onclick="downloadPNG()">Download PNG</button>
+        <button onclick="downloadSVG()">Download SVG</button>
+    </div>
+    <canvas id="logoCanvas" width="800" height="800"></canvas>
+    <script>
+        const canvas = document.getElementById('logoCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Colors
+        const colors = {
+            green: '#2E7D32',     // Sustainable/Nature
+            blue: '#1565C0',      // Water/Global
+            gold: '#FFC107',      // Excalibur/Value
+            earth: '#795548'      // Urban/Earth
+        };
+
+        function drawLogo() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Set background
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Center point
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = canvas.width * 0.35;
+
+            // Draw circular base
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.fillStyle = colors.blue;
+            ctx.fill();
+
+            // Draw Excalibur sword
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            ctx.rotate(-Math.PI / 4);
+            
+            // Sword handle
+            ctx.fillStyle = colors.gold;
+            ctx.fillRect(-radius * 0.1, radius * 0.2, radius * 0.2, radius * 0.6);
+            
+            // Sword blade
+            ctx.beginPath();
+            ctx.moveTo(0, -radius * 0.8);
+            ctx.lineTo(radius * 0.15, radius * 0.2);
+            ctx.lineTo(-radius * 0.15, radius * 0.2);
+            ctx.closePath();
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            
+            // Sword guard
+            ctx.fillStyle = colors.gold;
+            ctx.fillRect(-radius * 0.3, radius * 0.15, radius * 0.6, radius * 0.1);
+            
+            ctx.restore();
+
+            // Draw leaf elements (agriculture)
+            for (let i = 0; i < 3; i++) {
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.rotate((Math.PI * 2 / 3) * i + Math.PI / 6);
+                
+                ctx.beginPath();
+                ctx.moveTo(0, -radius * 0.5);
+                ctx.quadraticCurveTo(radius * 0.4, -radius * 0.3, 0, radius * 0.1);
+                ctx.quadraticCurveTo(-radius * 0.4, -radius * 0.3, 0, -radius * 0.5);
+                ctx.fillStyle = colors.green;
+                ctx.fill();
+                
+                ctx.restore();
+            }
+
+            // Draw urban development elements
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            
+            // Buildings silhouette
+            for (let i = -3; i <= 3; i++) {
+                const height = Math.abs(i) % 2 === 0 ? radius * 0.4 : radius * 0.3;
+                const width = radius * 0.15;
+                ctx.fillStyle = colors.earth;
+                ctx.globalAlpha = 0.5;
+                ctx.fillRect(i * width, radius * 0.1, width * 0.8, height);
+            }
+            
+            ctx.restore();
+
+            // Draw text
+            ctx.font = 'bold ' + (radius * 0.2) + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillStyle = 'white';
+            ctx.fillText('XGT', centerX, centerY + radius * 0.1);
+
+            // Draw outer ring
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 1.1, 0, Math.PI * 2);
+            ctx.strokeStyle = colors.gold;
+            ctx.lineWidth = radius * 0.05;
+            ctx.stroke();
+        }
+
+        function downloadPNG() {
+            const link = document.createElement('a');
+            link.download = 'xgt-logo.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function downloadSVG() {
+            // Create SVG version
+            const svgData = `
+            <svg width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:${colors.blue};stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:${colors.green};stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <circle cx="400" cy="400" r="280" fill="url(#grad)"/>
+                <path d="M400,120 L480,400 L320,400 Z" fill="white" transform="rotate(-45,400,400)"/>
+                <rect x="360" y="400" width="80" height="200" fill="${colors.gold}" transform="rotate(-45,400,400)"/>
+                <rect x="280" y="380" width="240" height="40" fill="${colors.gold}" transform="rotate(-45,400,400)"/>
+                <circle cx="400" cy="400" r="350" stroke="${colors.gold}" stroke-width="40" fill="none"/>
+                <text x="400" y="420" font-family="Arial" font-size="80" fill="white" text-anchor="middle" font-weight="bold">XGT</text>
+            </svg>`;
+
+            const blob = new Blob([svgData], {type: 'image/svg+xml'});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.download = 'xgt-logo.svg';
+            link.href = url;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Initial draw
+        drawLogo();
+    </script>
+</body>
+</html>

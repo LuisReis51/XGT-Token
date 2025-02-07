@@ -1,0 +1,111 @@
+/* Footer Styles */
+.site-footer {
+    background: var(--secondary);
+    padding: 30px 5%;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    position: relative;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-left, .footer-right {
+    flex: 1;
+}
+
+.footer-center {
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.xgt-logo {
+    max-width: 150px;
+}
+
+.xgt-logo img {
+    width: 100%;
+    height: auto;
+}
+
+.wallet-section {
+    text-align: right;
+}
+
+.btn-wallet {
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-wallet:hover {
+    background: var(--gold);
+    color: var(--primary);
+}
+
+.btn-wallet.connected {
+    background: var(--gold);
+    color: var(--primary);
+}
+
+.wallet-info {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.balance-label {
+    color: var(--text-secondary);
+    margin-right: 8px;
+}
+
+.balance-amount {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* Updated Button Styles */
+.btn-primary {
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-left, .footer-right {
+        width: 100%;
+    }
+    
+    .wallet-section {
+        text-align: center;
+    }
+    
+    .xgt-logo {
+        margin: 0 auto;
+    }
+}

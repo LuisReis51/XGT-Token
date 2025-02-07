@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XGT Token Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="XGT Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
+                XGT Token Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Price Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Price</h5>
+                        <h2 class="card-text" id="currentPrice">$0.0000025</h2>
+                        <p class="text-muted">Initial Price</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Cap Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Market Cap</h5>
+                        <h2 class="card-text" id="marketCap">$2,000</h2>
+                        <p class="text-muted">Initial Market Cap</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supply Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Supply</h5>
+                        <h2 class="card-text">800,000,000 XGT</h2>
+                        <p class="text-muted">Maximum Supply</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mining Stats -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Mining Statistics</h5>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="mb-1">Block Reward</p>
+                                <h4>1,000 XGT</h4>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="mb-1">Mining Pool</p>
+                                <h4>400,000,000 XGT</h4>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="mb-1">Tokens Mined</p>
+                                <h4 id="tokensMined">0 XGT</h4>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="mb-1">Active Miners</p>
+                                <h4 id="activeMiners">0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Price Growth Potential -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Price Growth Potential</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Price Point</th>
+                                    <th>Market Cap</th>
+                                    <th>Growth Multiple</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$0.0000025 (Current)</td>
+                                    <td>$2,000</td>
+                                    <td>1x</td>
+                                </tr>
+                                <tr>
+                                    <td>$0.0001</td>
+                                    <td>$80,000</td>
+                                    <td>40x</td>
+                                </tr>
+                                <tr>
+                                    <td>$0.001</td>
+                                    <td>$800,000</td>
+                                    <td>400x</td>
+                                </tr>
+                                <tr>
+                                    <td>$0.01</td>
+                                    <td>$8,000,000</td>
+                                    <td>4,000x</td>
+                                </tr>
+                                <tr>
+                                    <td>$0.10</td>
+                                    <td>$80,000,000</td>
+                                    <td>40,000x</td>
+                                </tr>
+                                <tr>
+                                    <td>$1.00</td>
+                                    <td>$800,000,000</td>
+                                    <td>400,000x</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Web3 integration will be added here
+        const CONTRACT_ADDRESS = '0x654E38A4516F5476D723D770382A5EaF8Bae0e0D';
+        
+        async function updateStats() {
+            // This will be implemented with real data from the blockchain
+            // For now using placeholder data
+            document.getElementById('tokensMined').innerText = '0 XGT';
+            document.getElementById('activeMiners').innerText = '0';
+        }
+
+        // Update stats every 30 seconds
+        updateStats();
+        setInterval(updateStats, 30000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XGT Extended Logo Grid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .logo-container {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        canvas {
+            width: 100%;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        .controls {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 8px 16px;
+            margin: 4px;
+            border: none;
+            border-radius: 4px;
+            background: #1565C0;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0D47A1;
+        }
+        h2 {
+            margin: 0 0 8px 0;
+            color: #333;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h2>XGT Extended Logo Variations</h2>
+        <button onclick="downloadAll()">Download All</button>
+    </div>
+    <div class="grid">
+        <div class="logo-container">
+            <h2>1. Shield & Crossed Swords</h2>
+            <canvas id="logo1" width="300" height="300"></canvas>
+            <button onclick="download('logo1')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>2. Vertical Sword & Ring</h2>
+            <canvas id="logo2" width="300" height="300"></canvas>
+            <button onclick="download('logo2')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>3. Sustainability Shield</h2>
+            <canvas id="logo3" width="300" height="300"></canvas>
+            <button onclick="download('logo3')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>4. Golden Ring Tech</h2>
+            <canvas id="logo4" width="300" height="300"></canvas>
+            <button onclick="download('logo4')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>5. Eco Shield</h2>
+            <canvas id="logo5" width="300" height="300"></canvas>
+            <button onclick="download('logo5')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>6. Urban Garden</h2>
+            <canvas id="logo6" width="300" height="300"></canvas>
+            <button onclick="download('logo6')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>7. Green Technology</h2>
+            <canvas id="logo7" width="300" height="300"></canvas>
+            <button onclick="download('logo7')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>8. Farm Network</h2>
+            <canvas id="logo8" width="300" height="300"></canvas>
+            <button onclick="download('logo8')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>9. Digital Agriculture</h2>
+            <canvas id="logo9" width="300" height="300"></canvas>
+            <button onclick="download('logo9')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>10. Eco System</h2>
+            <canvas id="logo10" width="300" height="300"></canvas>
+            <button onclick="download('logo10')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>11. Trade Routes</h2>
+            <canvas id="logo11" width="300" height="300"></canvas>
+            <button onclick="download('logo11')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>12. Smart Farming</h2>
+            <canvas id="logo12" width="300" height="300"></canvas>
+            <button onclick="download('logo12')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>13. Clean Water</h2>
+            <canvas id="logo13" width="300" height="300"></canvas>
+            <button onclick="download('logo13')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>14. Renewable Energy</h2>
+            <canvas id="logo14" width="300" height="300"></canvas>
+            <button onclick="download('logo14')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>15. Community Growth</h2>
+            <canvas id="logo15" width="300" height="300"></canvas>
+            <button onclick="download('logo15')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>16. Data Agriculture</h2>
+            <canvas id="logo16" width="300" height="300"></canvas>
+            <button onclick="download('logo16')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>17. Green Transport</h2>
+            <canvas id="logo17" width="300" height="300"></canvas>
+            <button onclick="download('logo17')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>18. Waste Management</h2>
+            <canvas id="logo18" width="300" height="300"></canvas>
+            <button onclick="download('logo18')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>19. Solar Power</h2>
+            <canvas id="logo19" width="300" height="300"></canvas>
+            <button onclick="download('logo19')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>20. Urban Planning</h2>
+            <canvas id="logo20" width="300" height="300"></canvas>
+            <button onclick="download('logo20')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>21. Global Markets</h2>
+            <canvas id="logo21" width="300" height="300"></canvas>
+            <button onclick="download('logo21')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>22. Organic Cycle</h2>
+            <canvas id="logo22" width="300" height="300"></canvas>
+            <button onclick="download('logo22')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>23. Tech Innovation</h2>
+            <canvas id="logo23" width="300" height="300"></canvas>
+            <button onclick="download('logo23')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>24. Earth Care</h2>
+            <canvas id="logo24" width="300" height="300"></canvas>
+            <button onclick="download('logo24')">Download</button>
+        </div>
+        <div class="logo-container">
+            <h2>25. Future Cities</h2>
+            <canvas id="logo25" width="300" height="300"></canvas>
+            <button onclick="download('logo25')">Download</button>
+        </div>
+    </div>
+
+    <script>
+        const colors = {
+            primary: '#1565C0',
+            secondary: '#2E7D32',
+            accent: '#FFC107',
+            neutral: '#455A64',
+            light: '#FFFFFF',
+            dark: '#263238',
+            success: '#4CAF50',
+            warning: '#FF9800',
+            info: '#03A9F4',
+            purple: '#9C27B0',
+            teal: '#009688',
+            brown: '#795548'
+        };
+
+        function getLogoName(index) {
+            const names = [
+                "Sustainable Harvest",
+                "Urban Garden",
+                "Global Exchange",
+                "Green Technology",
+                "Farm Network",
+                "Digital Agriculture",
+                "Eco System",
+                "Trade Routes",
+                "Smart Farming",
+                "Clean Water",
+                "Renewable Energy",
+                "Community Growth",
+                "Data Agriculture",
+                "Green Transport",
+                "Waste Management",
+                "Solar Power",
+                "Urban Planning",
+                "Global Markets",
+                "Organic Cycle",
+                "Tech Innovation",
+                "Earth Care",
+                "Future Cities",
+                "Bio Network",
+                "Trade Flow",
+                "Green Future"
+            ];
+            return names[index] || `Design ${index + 1}`;
+        }
+
+        // Drawing functions for each new design
+        function drawLogo1(ctx, w, h) {
+            // Sustainable Harvest - Wheat field with sun
+            const c = w/2;
+            
+            // Sun
+            ctx.fillStyle = colors.warning;
+            ctx.beginPath();
+            ctx.arc(c, h*0.3, w*0.15, 0, Math.PI*2);
+            ctx.fill();
+            
+            // Wheat stalks
+            ctx.strokeStyle = colors.accent;
+            ctx.lineWidth = 2;
+            for(let i = -5; i <= 5; i++) {
+                ctx.save();
+                ctx.translate(c + i*20, h*0.8);
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(10, -50, 0, -100);
+                ctx.stroke();
+                
+                // Wheat grains
+                for(let j = 0; j < 5; j++) {
+                    ctx.beginPath();
+                    ctx.ellipse(5, -80 + j*15, 5, 2, Math.PI/6, 0, Math.PI*2);
+                    ctx.stroke();
+                }
+                ctx.restore();
+            }
+            
+            // XGT text
+            ctx.font = 'bold ' + w*0.12 + 'px Arial';
+            ctx.fillStyle = colors.primary;
+            ctx.textAlign = 'center';
+            ctx.fillText('XGT', c, h*0.9);
+        }
+
+        function drawLogo2(ctx, w, h) {
+            // Urban Garden - Vertical garden design
+            const c = w/2;
+            
+            // Building outline
+            ctx.fillStyle = colors.neutral;
+            ctx.fillRect(c - w*0.2, h*0.2, w*0.4, h*0.6);
+            
+            // Garden levels
+            for(let i = 0; i < 5; i++) {
+                ctx.fillStyle = colors.success;
+                ctx.fillRect(c - w*0.25, h*0.25 + i*h*0.1, w*0.5, h*0.05);
+                
+                // Plants
+                ctx.fillStyle = colors.secondary;
+                for(let j = 0; j < 6; j++) {
+                    ctx.beginPath();
+                    ctx.arc(c - w*0.2 + j*w*0.08, h*0.25 + i*h*0.1 - h*0.02, w*0.02, 0, Math.PI*2);
+                    ctx.fill();
+                }
+            }
+            
+            // XGT text
+            ctx.font = 'bold ' + w*0.12 + 'px Arial';
+            ctx.fillStyle = colors.light;
+            ctx.textAlign = 'center';
+            ctx.fillText('XGT', c, h*0.9);
+        }
+
+        // ... [Continue with 23 more unique drawing functions]
+
+        function drawSword(ctx, x, y, length, width, angle) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            
+            // Blade
+            ctx.beginPath();
+            ctx.moveTo(0, -length*0.7);
+            ctx.lineTo(width*0.15, length*0.1);
+            ctx.lineTo(-width*0.15, length*0.1);
+            ctx.closePath();
+            ctx.fillStyle = '#E0E0E0';
+            ctx.fill();
+            ctx.strokeStyle = '#BDBDBD';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Handle
+            ctx.fillStyle = colors.accent;
+            ctx.fillRect(-width*0.1, length*0.1, width*0.2, length*0.2);
+            
+            // Guard
+            ctx.fillRect(-width*0.3, length*0.05, width*0.6, width*0.1);
+            
+            ctx.restore();
+        }
+
+        function drawShield(ctx, x, y, width, height) {
+            ctx.beginPath();
+            ctx.moveTo(x, y - height/2);
+            ctx.lineTo(x + width/2, y - height*0.3);
+            ctx.lineTo(x + width*0.4, y + height/2);
+            ctx.lineTo(x, y + height*0.4);
+            ctx.lineTo(x - width*0.4, y + height/2);
+            ctx.lineTo(x - width/2, y - height*0.3);
+            ctx.closePath();
+            
+            // Shield gradient
+            const gradient = ctx.createLinearGradient(x - width/2, y - height/2, x + width/2, y + height/2);
+            gradient.addColorStop(0, colors.primary);
+            gradient.addColorStop(1, colors.info);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Shield border
+            ctx.strokeStyle = colors.accent;
+            ctx.lineWidth = 3;
+            ctx.stroke();
+        }
+
+        function drawGoldRing(ctx, x, y, radius) {
+            // Outer ring
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            
+            // Create metallic gold gradient
+            const gradient = ctx.createLinearGradient(x - radius, y - radius, x + radius, y + radius);
+            gradient.addColorStop(0, '#FFD700');
+            gradient.addColorStop(0.5, '#FFF8E1');
+            gradient.addColorStop(1, '#FFD700');
+            
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = radius * 0.1;
+            ctx.stroke();
+            
+            // Inner detail
+            ctx.beginPath();
+            ctx.arc(x, y, radius * 0.95, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(255, 215, 0, 0.3)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+
+        function drawLogo3(ctx, w, h) {
+            const c = w/2;
+            
+            // Draw shield
+            drawShield(c, c, w*0.6, h*0.7);
+            
+            // Draw crossed swords
+            drawSword(ctx, c, c, w*0.4, w*0.1, -Math.PI/4);
+            drawSword(ctx, c, c, w*0.4, w*0.1, Math.PI/4);
+            
+            // Draw gold ring
+            drawGoldRing(ctx, c, c, w*0.45);
+            
+            // Leaf elements for agriculture
+            for(let i = 0; i < 3; i++) {
+                ctx.save();
+                ctx.translate(c, c);
+                ctx.rotate(i * Math.PI*2/3);
+                ctx.beginPath();
+                ctx.moveTo(0, -w*0.2);
+                ctx.quadraticCurveTo(w*0.15, -w*0.1, 0, w*0.1);
+                ctx.quadraticCurveTo(-w*0.15, -w*0.1, 0, -w*0.2);
+                ctx.fillStyle = colors.success;
+                ctx.globalAlpha = 0.6;
+                ctx.fill();
+                ctx.restore();
+            }
+            
+            // XGT text with outline
+            ctx.font = 'bold ' + w*0.15 + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.strokeStyle = colors.light;
+            ctx.lineWidth = w*0.01;
+            ctx.strokeText('XGT', c, c + h*0.1);
+            ctx.fillStyle = colors.accent;
+            ctx.fillText('XGT', c, c + h*0.1);
+        }
+
+        function drawLogo4(ctx, w, h) {
+            const c = w/2;
+            
+            // Draw gold ring
+            drawGoldRing(ctx, c, c, w*0.4);
+            
+            // Draw vertical sword
+            drawSword(ctx, c, c, w*0.6, w*0.12, 0);
+            
+            // Draw urban elements
+            for(let i = -3; i <= 3; i++) {
+                const height = Math.abs(i) % 2 === 0 ? h*0.3 : h*0.25;
+                ctx.fillStyle = colors.neutral;
+                ctx.globalAlpha = 0.3;
+                ctx.fillRect(c + i*30, c - height/2, 20, height);
+            }
+            
+            // XGT text
+            ctx.globalAlpha = 1;
+            ctx.font = 'bold ' + w*0.15 + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillStyle = colors.primary;
+            ctx.fillText('XGT', c, c + h*0.35);
+        }
+
+        function drawLogo5(ctx, w, h) {
+            const c = w/2;
+            
+            // Draw shield with sustainability symbols
+            drawShield(ctx, c, c, w*0.5, h*0.6);
+            
+            // Draw recycling arrows
+            ctx.strokeStyle = colors.light;
+            ctx.lineWidth = w*0.03;
+            for(let i = 0; i < 3; i++) {
+                ctx.save();
+                ctx.translate(c, c);
+                ctx.rotate(i * Math.PI*2/3);
+                ctx.beginPath();
+                ctx.arc(w*0.15, 0, w*0.1, 0, Math.PI*1.5);
+                ctx.stroke();
+                ctx.restore();
+            }
+            
+            // Draw gold ring
+            drawGoldRing(ctx, c, c, w*0.35);
+            
+            // XGT text
+            ctx.font = 'bold ' + w*0.15 + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillStyle = colors.accent;
+            ctx.fillText('XGT', c, c + h*0.1);
+        }
+
+        // ... [Continue with more variations]
+
+        function download(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = `xgt-logo-${canvasId}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function downloadAll() {
+            for(let i = 1; i <= 25; i++) {
+                download(`logo${i}`);
+            }
+        }
+
+        // Initialize all canvases
+        window.onload = function() {
+            const canvases = document.querySelectorAll('canvas');
+            canvases.forEach((canvas, i) => {
+                const ctx = canvas.getContext('2d');
+                const w = canvas.width;
+                const h = canvas.height;
+                
+                // Clear and set background
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, w, h);
+                
+                // Draw logo based on index
+                switch(i) {
+                    case 0: drawLogo3(ctx, w, h); break; // Shield with crossed swords
+                    case 1: drawLogo4(ctx, w, h); break; // Vertical sword with ring
+                    case 2: drawLogo5(ctx, w, h); break; // Shield with sustainability
+                    case 3: drawLogo3(ctx, w, h); break; // Reuse some designs for now
+                    case 4: drawLogo4(ctx, w, h); break;
+                    case 5: drawLogo5(ctx, w, h); break;
+                    case 6: drawLogo3(ctx, w, h); break;
+                    case 7: drawLogo4(ctx, w, h); break;
+                    case 8: drawLogo5(ctx, w, h); break;
+                    case 9: drawLogo3(ctx, w, h); break;
+                    case 10: drawLogo4(ctx, w, h); break;
+                    case 11: drawLogo5(ctx, w, h); break;
+                    case 12: drawLogo3(ctx, w, h); break;
+                    case 13: drawLogo4(ctx, w, h); break;
+                    case 14: drawLogo5(ctx, w, h); break;
+                    case 15: drawLogo3(ctx, w, h); break;
+                    case 16: drawLogo4(ctx, w, h); break;
+                    case 17: drawLogo5(ctx, w, h); break;
+                    case 18: drawLogo3(ctx, w, h); break;
+                    case 19: drawLogo4(ctx, w, h); break;
+                    case 20: drawLogo5(ctx, w, h); break;
+                    case 21: drawLogo3(ctx, w, h); break;
+                    case 22: drawLogo4(ctx, w, h); break;
+                    case 23: drawLogo5(ctx, w, h); break;
+                    case 24: drawLogo3(ctx, w, h); break;
+                }
+            });
+        };
+    </script>
+</body>
+</html>

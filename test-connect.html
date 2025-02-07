@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test MetaMask Connection</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        button { padding: 10px; margin: 10px 0; }
+        #status { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Test MetaMask Connection</h1>
+    <button onclick="connectWallet()">Connect Wallet</button>
+    <div id="status"></div>
+
+    <script>
+        async function connectWallet() {
+            if (typeof window.ethereum === 'undefined') {
+                document.getElementById('status').textContent = 'MetaMask is not installed!';
+                return;
+            }
+
+            try {
+                // Request account access
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                const account = accounts[0];
+                document.getElementById('status').textContent = 'Connected: ' + account;
+
+                // Try to switch to BSC
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{ chainId: '0x38' }]
+                    });
+                } catch (switchError) {
+                    // Add BSC network if not present
+                    if (switchError.code === 4902) {
+                        await window.ethereum.request({
+                            method: 'wallet_addEthereumChain',
+                            params: [{
+                                chainId: '0x38',
+                                chainName: 'Binance Smart Chain',
+                                nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+                                rpcUrls: ['https://bsc-dataseed.binance.org/'],
+                                blockExplorerUrls: ['https://bscscan.com/']
+                            }]
+                        });
+                    }
+                }
+            } catch (error) {
+                document.getElementById('status').textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

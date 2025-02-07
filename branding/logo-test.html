@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XGT 3D Logo</title>
+</head>
+<body style="background: #f0f0f0; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0;">
+    <canvas id="logo" width="400" height="400" style="border:1px solid #ccc; background: white;"></canvas>
+    <script>
+        const canvas = document.getElementById('logo');
+        const ctx = canvas.getContext('2d');
+        
+        function draw3DSword(x, y, length, angle, depth, type) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            
+            // Sword layers for 3D effect
+            for(let i = depth; i >= 0; i--) {
+                const offset = i * 1;  // Reduced layer offset
+                
+                // Slimmer blade
+                ctx.beginPath();
+                ctx.moveTo(0 + offset, -length*0.7);
+                ctx.lineTo(12 + offset, length*0.1);  // Reduced width
+                ctx.lineTo(-12 + offset, length*0.1); // Reduced width
+                ctx.closePath();
+                
+                // Different metallic gradients for each sword
+                const bladeGradient = ctx.createLinearGradient(-12, -length*0.7, 12, length*0.1);
+                if (type === 'steel') {
+                    // Ice blue steel
+                    bladeGradient.addColorStop(0, `rgba(145, 195, 225, ${0.8 + i/depth})`);
+                    bladeGradient.addColorStop(0.5, `rgba(235, 245, 255, ${0.9 + i/depth})`);
+                    bladeGradient.addColorStop(1, `rgba(100, 149, 190, ${0.8 + i/depth})`);
+                } else {
+                    // Rich bronze/copper
+                    bladeGradient.addColorStop(0, `rgba(230, 140, 30, ${0.8 + i/depth})`);
+                    bladeGradient.addColorStop(0.5, `rgba(255, 177, 71, ${0.9 + i/depth})`);
+                    bladeGradient.addColorStop(1, `rgba(205, 112, 0, ${0.8 + i/depth})`);
+                }
+                
+                ctx.fillStyle = bladeGradient;
+                ctx.fill();
+                
+                // Slimmer handle
+                const handleGradient = ctx.createLinearGradient(-6, length*0.1, 6, length*0.3);
+                if (type === 'steel') {
+                    handleGradient.addColorStop(0, '#FFD700');
+                    handleGradient.addColorStop(0.5, '#FFFAF0');
+                    handleGradient.addColorStop(1, '#FFA500');
+                } else {
+                    handleGradient.addColorStop(0, '#E8E8E8');
+                    handleGradient.addColorStop(0.5, '#FFFFFF');
+                    handleGradient.addColorStop(1, '#C0C0C0');
+                }
+                
+                ctx.fillStyle = handleGradient;
+                ctx.fillRect(-6 + offset, length*0.1, 12, length*0.2); // Slimmer handle
+                
+                // Slimmer guard
+                const guardGradient = ctx.createLinearGradient(-30, 0, 30, 0);
+                if (type === 'steel') {
+                    guardGradient.addColorStop(0, '#FFD700');
+                    guardGradient.addColorStop(0.5, '#FFF8E1');
+                    guardGradient.addColorStop(1, '#FFD700');
+                } else {
+                    guardGradient.addColorStop(0, '#B8B8B8');
+                    guardGradient.addColorStop(0.5, '#E8E8E8');
+                    guardGradient.addColorStop(1, '#A8A8A8');
+                }
+                
+                ctx.fillStyle = guardGradient;
+                ctx.fillRect(-30 + offset, length*0.05, 60, 10); // Slimmer guard
+            }
+            
+            // Add double shine effect
+            if (type === 'steel') {
+                // Primary shine
+                const shineGradient = ctx.createLinearGradient(-10, -length*0.5, 10, -length*0.2);
+                shineGradient.addColorStop(0, 'rgba(255,255,255,0)');
+                shineGradient.addColorStop(0.5, 'rgba(255,255,255,0.5)');
+                shineGradient.addColorStop(1, 'rgba(255,255,255,0)');
+                ctx.fillStyle = shineGradient;
+                ctx.fill();
+                
+                // Secondary shine
+                ctx.beginPath();
+                ctx.moveTo(-5, -length*0.6);
+                ctx.lineTo(5, -length*0.3);
+                ctx.lineTo(-5, length*0);
+                ctx.closePath();
+                const secondaryShine = ctx.createLinearGradient(-5, -length*0.6, 5, length*0);
+                secondaryShine.addColorStop(0, 'rgba(200,230,255,0)');
+                secondaryShine.addColorStop(0.5, 'rgba(200,230,255,0.3)');
+                secondaryShine.addColorStop(1, 'rgba(200,230,255,0)');
+                ctx.fillStyle = secondaryShine;
+                ctx.fill();
+            } else {
+                // Primary shine
+                const shineGradient = ctx.createLinearGradient(-10, -length*0.5, 10, -length*0.2);
+                shineGradient.addColorStop(0, 'rgba(255,240,200,0)');
+                shineGradient.addColorStop(0.5, 'rgba(255,240,200,0.4)');
+                shineGradient.addColorStop(1, 'rgba(255,240,200,0)');
+                ctx.fillStyle = shineGradient;
+                ctx.fill();
+                
+                // Secondary shine
+                ctx.beginPath();
+                ctx.moveTo(5, -length*0.6);
+                ctx.lineTo(-5, -length*0.3);
+                ctx.lineTo(5, length*0);
+                ctx.closePath();
+                const secondaryShine = ctx.createLinearGradient(5, -length*0.6, -5, length*0);
+                secondaryShine.addColorStop(0, 'rgba(255,200,150,0)');
+                secondaryShine.addColorStop(0.5, 'rgba(255,200,150,0.3)');
+                secondaryShine.addColorStop(1, 'rgba(255,200,150,0)');
+                ctx.fillStyle = secondaryShine;
+                ctx.fill();
+            }
+            
+            ctx.restore();
+        }
+
+        function draw3DShield() {
+            const c = canvas.width/2;
+            const w = canvas.width;
+            const h = canvas.height;
+            
+            // Create 3D effect with multiple layers
+            for(let i = 15; i >= 0; i--) {
+                const offset = i * 1.5; // Reduced layer offset
+                
+                // Slimmer shield
+                ctx.beginPath();
+                ctx.moveTo(c, 100 + offset);  // Higher start point
+                ctx.lineTo(c + 100, 170 + offset);  // Reduced width
+                ctx.lineTo(c + 80, 280 + offset);   // Reduced width
+                ctx.lineTo(c, 250 + offset);
+                ctx.lineTo(c - 80, 280 + offset);   // Reduced width
+                ctx.lineTo(c - 100, 170 + offset);  // Reduced width
+                ctx.closePath();
+                
+                // Create metallic gradient
+                const gradient = ctx.createLinearGradient(c - 100, 100, c + 100, 280);
+                gradient.addColorStop(0, `rgba(21, 101, 192, ${0.7 + i/30})`);
+                gradient.addColorStop(0.3, `rgba(30, 136, 229, ${0.7 + i/30})`);
+                gradient.addColorStop(0.7, `rgba(21, 101, 192, ${0.7 + i/30})`);
+                gradient.addColorStop(1, `rgba(13, 71, 161, ${0.7 + i/30})`);
+                
+                ctx.fillStyle = gradient;
+                ctx.fill();
+                
+                if(i === 0) {
+                    // Thinner border
+                    const borderGradient = ctx.createLinearGradient(c - 100, 100, c + 100, 280);
+                    borderGradient.addColorStop(0, '#FFD700');
+                    borderGradient.addColorStop(0.5, '#FFF8E1');
+                    borderGradient.addColorStop(1, '#FFD700');
+                    
+                    ctx.strokeStyle = borderGradient;
+                    ctx.lineWidth = 2;  // Thinner border
+                    ctx.stroke();
+                    
+                    // Shield highlight
+                    const highlight = ctx.createLinearGradient(c - 60, 100, c + 60, 150);
+                    highlight.addColorStop(0, 'rgba(255,255,255,0)');
+                    highlight.addColorStop(0.5, 'rgba(255,255,255,0.2)');
+                    highlight.addColorStop(1, 'rgba(255,255,255,0)');
+                    
+                    ctx.fillStyle = highlight;
+                    ctx.fill();
+                }
+            }
+            
+            // Draw crossed swords with more spacing
+            draw3DSword(c - 15, c, 140, -Math.PI/4 + swordAngle, 10, 'steel');    // Moved left
+            draw3DSword(c + 15, c, 140, Math.PI/4 - swordAngle, 10, 'bronze');    // Moved right
+            
+            // Smaller text
+            ctx.save();
+            
+            // Text shadow layers
+            for(let i = 8; i >= 0; i--) {
+                ctx.fillStyle = `rgba(255, 193, 7, ${0.7 + i/10})`;
+                ctx.font = 'bold 60px Arial';  // Smaller font
+                ctx.textAlign = 'center';
+                ctx.fillText('XGT', c + i*1.5, 210 + i*1.5);  // Adjusted position and shadow spread
+            }
+            
+            // Main text
+            const textGradient = ctx.createLinearGradient(c - 50, 170, c + 50, 210);
+            textGradient.addColorStop(0, '#FFD700');
+            textGradient.addColorStop(0.5, '#FFF8E1');
+            textGradient.addColorStop(1, '#FFD700');
+            
+            ctx.fillStyle = textGradient;
+            ctx.fillText('XGT', c, 210);
+            
+            ctx.strokeStyle = '#B7950B';
+            ctx.lineWidth = 1.5;  // Thinner text outline
+            ctx.strokeText('XGT', c, 210);
+            
+            ctx.restore();
+        }
+        
+        let angle = 0;
+        let swordAngle = 0;
+        
+        function animate() {
+            angle += 0.02;
+            swordAngle = Math.sin(angle) * 0.05;
+            const floatOffset = Math.sin(angle) * 3;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.save();
+            ctx.translate(0, floatOffset);
+            draw3DShield();
+            ctx.restore();
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Start the animation
+        animate();
+    </script>
+</body>
+</html>

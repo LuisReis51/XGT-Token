@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XGT Token</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="token-hero">
+        <div class="container">
+            <h1>XGT Token</h1>
+            <p>Powering sustainable agriculture and urban development through blockchain technology</p>
+            <div class="token-actions">
+                <a href="#" class="button">Buy XGT</a>
+                <a href="#" class="button">View Chart</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Details -->
+    <section class="token-section">
+        <div class="container">
+            <h3>Token Details</h3>
+            <div class="token-info">
+                <div class="token-detail">
+                    <span class="value">1,000,000,000</span>
+                    <span class="label">Total Supply</span>
+                </div>
+                <div class="token-detail">
+                    <span class="value">BSC</span>
+                    <span class="label">Network</span>
+                </div>
+                <div class="token-detail">
+                    <span class="value">0x654...0e0D</span>
+                    <span class="label">Contract</span>
+                </div>
+                <div class="token-detail">
+                    <span class="value">$0.0001</span>
+                    <span class="label">Current Price</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mining Section -->
+    <section class="mining-section">
+        <div class="container">
+            <h3>XGT Mining</h3>
+            <div class="mining-stats">
+                <div class="stat-box">
+                    <div class="stat-value">0.00</div>
+                    <div class="stat-label">XGT Balance</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">0.00</div>
+                    <div class="stat-label">Mining Rate (XGT/hr)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Active Miners</div>
+                </div>
+            </div>
+
+            <div class="mining-controls">
+                <button id="connect-wallet" class="button">Connect Wallet</button>
+                <div class="mining-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="miningProgress"></div>
+                    </div>
+                    <div class="status-message" id="miningStatus">Please connect your wallet</div>
+                </div>
+                <button id="startMining" class="mine-button" disabled>Start Mining</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="mining.js"></script>
+</body>
+</html>

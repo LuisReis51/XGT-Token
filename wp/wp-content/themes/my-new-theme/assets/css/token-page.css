@@ -1,0 +1,192 @@
+/* Token Landing Page Styles */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+    color: white;
+    padding: 100px 0;
+    margin-top: -32px; /* Adjust based on your header height */
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-buttons {
+    margin-top: 2rem;
+}
+
+.hero-buttons .btn {
+    margin-right: 1rem;
+    padding: 0.8rem 2rem;
+}
+
+/* Token Stats */
+.token-stats {
+    padding: 40px 0;
+    background: var(--light-color);
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    height: 100%;
+}
+
+.stat-card h3 {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.stat-card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+/* Mining Interface */
+.mining-interface {
+    background: var(--dark-color);
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+}
+
+.wallet-connection {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.mining-controls {
+    background: rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.mining-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.mining-stats div {
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 5px;
+}
+
+/* Feature List */
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.feature-list li:before {
+    content: "✓";
+    color: var(--success-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Tokenomics Cards */
+.tokenomics-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.tokenomics-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.tokenomics-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tokenomics-card li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.tokenomics-card li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+/* CTA Section */
+.cta-section {
+    background: var(--primary-color);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    margin-top: 2rem;
+}
+
+.social-links .btn {
+    margin: 0 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+        padding: 60px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .stat-card {
+        margin-bottom: 1rem;
+    }
+    
+    .mining-stats {
+        grid-template-columns: 1fr;
+    }
+}

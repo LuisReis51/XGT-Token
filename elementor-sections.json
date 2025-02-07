@@ -1,0 +1,89 @@
+{
+    "home_page": {
+        "hero_section": {
+            "type": "section",
+            "settings": {
+                "height": "full",
+                "background_background": "video",
+                "background_video_link": "YOUR_VIDEO_URL",
+                "padding": {
+                    "unit": "px",
+                    "top": "100",
+                    "right": "0",
+                    "bottom": "100",
+                    "left": "0"
+                }
+            },
+            "elements": [
+                {
+                    "type": "heading",
+                    "settings": {
+                        "title": "Advancing Sustainable Agriculture Worldwide",
+                        "align": "center",
+                        "typography_font_size": {
+                            "unit": "px",
+                            "size": "64"
+                        }
+                    }
+                }
+            ]
+        },
+        "why_important_section": {
+            "type": "section",
+            "settings": {
+                "background_color": "#1a1a1a",
+                "padding": {
+                    "unit": "px",
+                    "top": "80",
+                    "right": "20",
+                    "bottom": "80",
+                    "left": "20"
+                }
+            },
+            "elements": [
+                {
+                    "type": "column",
+                    "settings": {
+                        "_column_size": 33
+                    },
+                    "elements": [
+                        {
+                            "type": "icon-box",
+                            "settings": {
+                                "icon": "fa fa-leaf",
+                                "title_text": "Sustainable Agriculture",
+                                "description_text": "Promoting sustainable agricultural development for food security"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "xgt_token_section": {
+            "type": "section",
+            "settings": {
+                "background_gradient_angle": {
+                    "unit": "deg",
+                    "size": 180
+                },
+                "background_gradient_position": "center center",
+                "padding": {
+                    "unit": "px",
+                    "top": "100",
+                    "right": "20",
+                    "bottom": "100",
+                    "left": "20"
+                }
+            },
+            "elements": [
+                {
+                    "type": "widget",
+                    "settings": {
+                        "title": "XGT Token Integration",
+                        "html": "<div id='xgt-balance-display'></div>"
+                    }
+                }
+            ]
+        }
+    }
+}

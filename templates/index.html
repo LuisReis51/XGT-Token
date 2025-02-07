@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}XGT Token - Home{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Welcome to XGT Token</h1>
+    <p>Mine, Trade, and Grow with XGT Token on the Binance Smart Chain</p>
+    <div class="cta-buttons">
+        <a href="{{ url_for('mining') }}" class="button primary">Start Mining</a>
+        <a href="https://pancakeswap.finance/swap?outputCurrency=0x654E38A4516F5476D723D770382A5EaF8Bae0e0D" target="_blank" class="button secondary">Trade on PancakeSwap</a>
+    </div>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>XGT Price</h3>
+        <p id="xgt-price">Loading...</p>
+    </div>
+    <div class="stat-card">
+        <h3>BNB Price</h3>
+        <p id="bnb-price">Loading...</p>
+    </div>
+    <div class="stat-card">
+        <h3>Liquidity</h3>
+        <p id="liquidity">Loading...</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function updateStats() {
+    try {
+        // Get price data
+        const priceResponse = await fetch('/api/price');
+        const priceData = await priceResponse.json();
+        
+        if (priceData.success) {
+            document.getElementById('xgt-price').textContent = `$${priceData.price.toFixed(8)}`;
+            document.getElementById('bnb-price').textContent = `$${priceData.bnb_price.toFixed(2)}`;
+        }
+
+        // Get liquidity data
+        const statsResponse = await fetch('/api/stats');
+        const statsData = await statsResponse.json();
+        
+        if (statsData.success) {
+            const xgtLiquidity = statsData.liquidity.xgt;
+            const bnbLiquidity = statsData.liquidity.bnb;
+            document.getElementById('liquidity').textContent = 
+                `${(xgtLiquidity / 1e18).toFixed(2)} XGT / ${(bnbLiquidity / 1e18).toFixed(2)} BNB`;
+        }
+    } catch (error) {
+        console.error('Error updating stats:', error);
+    }
+}
+
+// Update stats immediately and every 30 seconds
+updateStats();
+setInterval(updateStats, 30000);
+</script>
+{% endblock %}

@@ -1,0 +1,8 @@
+http://localhost:8000/test-mine.html
+
+Perfect! Now you can keep the server running using the serve.py script whenever you need to access the mining interface. Just remember to:
+
+Run python serve.py from the XGT folder
+Access the interface at http://localhost:8000/mining.html
+The issue was simply that MetaMask requires the page to be served through a proper web server (http://) rather than opened directly from the filesystem (file:///).
+

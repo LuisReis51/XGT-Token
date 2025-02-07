@@ -1,0 +1,22 @@
+First, click the MetaMask extension icon (the fox) in your browser
+In the MetaMask popup:
+Look at the top where it shows the network
+Click the dropdown
+Select "Sepolia" from the list
+The MetaMask extension (fox icon) and the MetaMask website/portfolio might show different networks, but what matters is what's selected in the extension popup.
+
+If you don't see Sepolia in the dropdown list:
+
+Click "Add network"
+Click "Add a network manually"
+Enter these details:
+Network Name: Sepolia
+RPC URL: https://eth-sepolia.g.alchemy.com/v2/hbX0uHHfyGIZYvsqkOwSfQLPz5_S8zc0
+Chain ID: 11155111
+Currency Symbol: ETH
+Block Explorer URL: https://sepolia.etherscan.io
+Let me know if you:
+
+Can see Sepolia in the dropdown
+Need help adding it manually
+Successfully switch to Sepolia in the extension

@@ -1,0 +1,32 @@
+<div class="container">
+    <div id="status">Not Connected</div>
+    <button id="connect">Connect Wallet</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+<script>
+document.getElementById('connect').addEventListener('click', async () => {
+    try {
+        if (typeof window.ethereum === 'undefined') {
+            document.getElementById('status').textContent = 'MetaMask not found!';
+            return;
+        }
+
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        document.getElementById('status').textContent = 'Connected: ' + accounts[0];
+        
+        // Try to switch to BSC
+        try {
+            await window.ethereum.request({
+                method: 'wallet_switchEthereumChain',
+                params: [{ chainId: '0x38' }]
+            });
+            document.getElementById('status').textContent += ' (Switched to BSC)';
+        } catch (switchError) {
+            document.getElementById('status').textContent += ' (Failed to switch to BSC)';
+        }
+        
+    } catch (error) {
+        document.getElementById('status').textContent = 'Error: ' + error.message;
+    }
+});
+</script>

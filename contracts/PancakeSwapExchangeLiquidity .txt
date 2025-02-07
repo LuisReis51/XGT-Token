@@ -1,0 +1,10 @@
+First, go to: https://pancakeswap.finance/add/BNB/0x654E38A4516F5476D723D770382A5EaF8Bae0e0D
+Click "Connect Wallet" in the top right corner and select MetaMask
+You'll see two input fields:
+First field: BNB (set this to 0.05)
+Second field: XGT (set this to 400,000,000)
+Before clicking "Supply", make sure you have:
+At least 0.05 BNB in your wallet
+Approved XGT tokens for PancakeSwap (it will prompt you to approve if needed)
+Click "Supply" and confirm the transaction in MetaMask
+After the transaction is confirmed, the price will be set and our mining interface should start showing the price automatically

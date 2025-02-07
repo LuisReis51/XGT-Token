@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}XGT Token - Mining Interface{% endblock %}
+
+{% block content %}
+<div class="mining-interface">
+    <h1>XGT Mining Interface</h1>
+    
+    <div id="status-message"></div>
+    
+    <div class="wallet-section">
+        <button id="connect-wallet" class="button primary">Connect Wallet</button>
+        <p id="wallet-status">Wallet not connected</p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Your XGT Balance</h3>
+            <p id="xgt-balance">Connect wallet to view</p>
+        </div>
+        <div class="stat-card">
+            <h3>XGT Price</h3>
+            <p id="xgt-price">Loading...</p>
+        </div>
+    </div>
+
+    <div class="mining-section">
+        <button id="mine-button" class="button primary" disabled>Start Mining</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+<script>
+const XGT_ADDRESS = '0x654E38A4516F5476D723D770382A5EaF8Bae0e0D';
+const XGT_ABI = [
+    {
+        "inputs": [],
+        "name": "mine",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{"internalType": "address","name": "account","type": "address"}],
+        "name": "balanceOf",
+        "outputs": [{"internalType": "uint256","name": "","type": "uint256"}],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "decimals",
+        "outputs": [{"internalType": "uint8","name": "","type": "uint8"}],
+        "stateMutability": "view",
+        "type": "function"
+    }
+];
+
+let web3;
+let account;
+let xgtContract;
+
+async function checkMetaMask() {
+    if (typeof window.ethereum !== 'undefined') {
+        web3 = new Web3(window.ethereum);
+        return true;
+    }
+    document.getElementById('status-message').innerHTML = '<div class="error">Please install MetaMask to use this interface.</div>';
+    return false;
+}
+
+async function connectWallet() {
+    try {
+        if (!await checkMetaMask()) return;
+        
+        // Request account access
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        account = accounts[0];
+        
+        // Check if we're on BSC
+        const chainId = await web3.eth.getChainId();
+        if (chainId !== 56) {
+            // Switch to BSC
+            try {
+                await window.ethereum.request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{ chainId: '0x38' }],
+                });
+            } catch (switchError) {
+                // Add BSC if not present
+                if (switchError.code === 4902) {
+                    await window.ethereum.request({
+                        method: 'wallet_addEthereumChain',
+                        params: [{
+                            chainId: '0x38',
+                            chainName: 'Binance Smart Chain',
+                            nativeCurrency: {
+                                name: 'BNB',
+                                symbol: 'BNB',
+                                decimals: 18
+                            },
+                            rpcUrls: ['https://bsc-dataseed.binance.org/'],
+                            blockExplorerUrls: ['https://bscscan.com/']
+                        }]
+                    });
+                }
+            }
+        }
+        
+        // Initialize contract
+        xgtContract = new web3.eth.Contract(XGT_ABI, XGT_ADDRESS);
+        
+        // Enable mining button
+        document.getElementById('mine-button').disabled = false;
+        document.getElementById('wallet-status').textContent = 'Connected: ' + account.substring(0, 6) + '...' + account.substring(38);
+        
+        // Update balance
+        updateBalance();
+        
+        // Setup event listeners
+        window.ethereum.on('accountsChanged', function (accounts) {
+            window.location.reload();
+        });
+        
+        window.ethereum.on('chainChanged', function (chainId) {
+            window.location.reload();
+        });
+        
+    } catch (error) {
+        console.error('Connection error:', error);
+        document.getElementById('status-message').innerHTML = '<div class="error">Error connecting wallet: ' + error.message + '</div>';
+    }
+}
+
+async function updateBalance() {
+    try {
+        if (!xgtContract || !account) return;
+        const decimals = await xgtContract.methods.decimals().call();
+        const balance = await xgtContract.methods.balanceOf(account).call();
+        const formattedBalance = balance / (10 ** decimals);
+        document.getElementById('xgt-balance').textContent = formattedBalance + ' XGT';
+    } catch (error) {
+        console.error('Balance update error:', error);
+        document.getElementById('xgt-balance').textContent = 'Error fetching balance';
+    }
+}
+
+async function mineXGT() {
+    try {
+        document.getElementById('mine-button').disabled = true;
+        document.getElementById('status-message').innerHTML = '<div class="status">Mining in progress...</div>';
+        
+        const tx = await xgtContract.methods.mine().send({ from: account });
+        
+        document.getElementById('status-message').innerHTML = '<div class="success">Mining successful!</div>';
+        updateBalance();
+    } catch (error) {
+        console.error('Mining error:', error);
+        document.getElementById('status-message').innerHTML = '<div class="error">Mining failed: ' + error.message + '</div>';
+    } finally {
+        document.getElementById('mine-button').disabled = false;
+    }
+}
+
+// Event Listeners
+document.getElementById('connect-wallet').addEventListener('click', connectWallet);
+document.getElementById('mine-button').addEventListener('click', mineXGT);
+
+// Update price
+async function updatePrice() {
+    try {
+        const response = await fetch('/api/price');
+        const data = await response.json();
+        if (data.success) {
+            document.getElementById('xgt-price').textContent = `$${data.price.toFixed(8)}`;
+        }
+    } catch (error) {
+        console.error('Error updating price:', error);
+        document.getElementById('xgt-price').textContent = 'Error fetching price';
+    }
+}
+
+// Update price immediately and every 30 seconds
+updatePrice();
+setInterval(updatePrice, 30000);
+</script>
+{% endblock %}

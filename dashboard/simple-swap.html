@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple XGT Swap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Web3 -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Network Status -->
+                <div class="alert alert-warning" id="networkStatus">
+                    Please connect to Sepolia Network
+                </div>
+
+                <!-- Wallet Connection -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Connect Wallet</h5>
+                        <button class="btn btn-primary" id="connectButton">Connect MetaMask</button>
+                        <p class="mt-2" id="walletAddress">Not connected</p>
+                    </div>
+                </div>
+
+                <!-- Network Switcher -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Network</h5>
+                        <button class="btn btn-warning" id="switchNetwork">Switch to Sepolia</button>
+                    </div>
+                </div>
+
+                <!-- Token Info -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">XGT Token Info</h5>
+                        <p>Address: <code>0x654E38A4516F5476D723D770382A5EaF8Bae0e0D</code></p>
+                        <button class="btn btn-info" id="addToken">Add to MetaMask</button>
+                    </div>
+                </div>
+
+                <!-- Swap Interface -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Swap ETH for XGT</h5>
+                        <div class="mb-3">
+                            <label>ETH Amount:</label>
+                            <input type="number" class="form-control" id="ethAmount" value="0.01" step="0.01">
+                        </div>
+                        <button class="btn btn-success" id="swapButton">Swap ETH for XGT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const XGT_ADDRESS = '0x654E38A4516F5476D723D770382A5EaF8Bae0e0D';
+        const ROUTER_ADDRESS = '0xC532a74256D3Db42D0Bf7a0400fEFDbad7694008';
+        let userAddress = null;
+        let web3;
+
+        // Connect Wallet
+        async function connectWallet() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                    userAddress = accounts[0];
+                    document.getElementById('walletAddress').textContent = 'Connected: ' + userAddress.substring(0,6) + '...' + userAddress.substring(38);
+                    document.getElementById('connectButton').textContent = 'Connected';
+                    checkNetwork();
+                } catch (error) {
+                    console.error(error);
+                    alert('Failed to connect wallet');
+                }
+            } else {
+                alert('Please install MetaMask!');
+            }
+        }
+
+        // Check Network
+        async function checkNetwork() {
+            if (typeof window.ethereum !== 'undefined') {
+                const chainId = await ethereum.request({ method: 'eth_chainId' });
+                if (chainId === '0xaa36a7') { // Sepolia
+                    document.getElementById('networkStatus').className = 'alert alert-success';
+                    document.getElementById('networkStatus').textContent = 'Connected to Sepolia Network';
+                    return true;
+                } else {
+                    document.getElementById('networkStatus').className = 'alert alert-warning';
+                    document.getElementById('networkStatus').textContent = 'Please switch to Sepolia Network';
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        // Switch to Sepolia
+        async function switchToSepolia() {
+            try {
+                await ethereum.request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{ chainId: '0xaa36a7' }],
+                });
+            } catch (error) {
+                alert('Failed to switch to Sepolia network');
+                console.error(error);
+            }
+        }
+
+        // Add Token to MetaMask
+        async function addTokenToMetaMask() {
+            try {
+                await ethereum.request({
+                    method: 'wallet_watchAsset',
+                    params: {
+                        type: 'ERC20',
+                        options: {
+                            address: XGT_ADDRESS,
+                            symbol: 'XGT',
+                            decimals: 18,
+                            image: 'https://excaliburglobal.farm/logo.png'
+                        },
+                    },
+                });
+            } catch (error) {
+                console.error(error);
+                alert('Failed to add token to MetaMask');
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('connectButton').addEventListener('click', connectWallet);
+        document.getElementById('switchNetwork').addEventListener('click', switchToSepolia);
+        document.getElementById('addToken').addEventListener('click', addTokenToMetaMask);
+
+        // Check network on load and when chain changes
+        if (typeof window.ethereum !== 'undefined') {
+            ethereum.on('chainChanged', checkNetwork);
+            checkNetwork();
+        }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

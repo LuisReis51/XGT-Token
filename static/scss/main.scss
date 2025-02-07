@@ -1,0 +1,239 @@
+// Variables
+$font-default: 'Arial', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-family-base: $font-default;
+$ff-headlines: $font-default;
+$color-background: #ffffff;
+$color-primary: #4e79a7;
+$color-secondary: #3a3c3b;
+$color-default: #5a5c5b;
+$color-text: #5a5c5b;
+$color-text-secondary: #888888;
+$color-border: #333333;
+$color-user-1: none;
+$color-user-2: none;
+$color-user-3: none;
+$color-user-4: none;
+$color-user-5: none;
+
+// Typography
+$fz-base: 16px;
+$fz-h1-all: (56px, 48px, 32px);
+$fz-h2-all: (48px, 40px, 28px);
+$fz-h3-all: (40px, 32px, 24px);
+$fz-h4-all: (32px, 24px, 20px);
+$fz-h5-all: (24px, 20px, 18px);
+$fz-h6-all: (20px, 18px, 16px);
+$ls-all: (0px, 12px, 0px);
+$fw-base: 400;
+$fw-bold: 600;
+
+// Spacing
+$spacing-base: 8px;
+$spacing-small: $spacing-base / 2;
+$spacing-large: $spacing-base * 2;
+$spacing-xlarge: $spacing-base * 4;
+
+// Borders and Effects
+$border-radius: 0;
+$border-width: 1px;
+$border-style: solid;
+$border-color: $color-border;
+$shadow-color: rgba(0, 255, 140, 0.1);
+$glow-primary: 0 0 20px $shadow-color;
+
+// Buttons
+$button-padding: 1rem 2rem;
+$button-border-radius: 0;
+$button-background-active: darken($color-primary, 10%);
+
+// Layout
+$spacer-container-all: (6rem, 4rem, 3rem);
+$content-width: 75rem;
+$menu-breakpoint: 992px;
+
+// Navigation
+$menu-link-fw: 600;
+$menu-link-letter-spacing: 1px;
+$menu-padding: 1.2rem;
+$menu-animation-duration: 0.25s;
+$menu-size: (90%, 95%, 100%);
+
+// Base styles
+body {
+    font-family: $font-default;
+    background-color: $color-background;
+    color: $color-default;
+    line-height: 1.5;
+    font-size: $fz-base;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+    font-family: $ff-headlines;
+    color: $color-default;
+    font-weight: $fw-bold;
+}
+
+// Links
+a {
+    color: $color-primary;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    &:hover {
+        color: darken($color-primary, 10%);
+    }
+}
+
+// Navigation
+.navbar {
+    position: sticky;
+    top: 0;
+    background: $color-background;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    z-index: 1000;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $menu-padding;
+        max-width: $content-width;
+        margin: 0 auto;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        font-weight: $fw-bold;
+        text-decoration: none;
+        color: $color-primary;
+        
+        img {
+            margin-right: 0.5rem;
+        }
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+
+        a {
+            color: $color-primary;
+            text-decoration: none;
+            font-weight: $menu-link-fw;
+            letter-spacing: $menu-link-letter-spacing;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: $color-secondary;
+            }
+        }
+    }
+}
+
+// Buttons
+.button {
+    display: inline-block;
+    padding: $button-padding-vertical $button-padding-horizontal;
+    border-radius: $button-border-radius;
+    background-color: $color-secondary;
+    color: white;
+    text-decoration: none;
+    font-weight: $fw-bold;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $button-background-active;
+        transform: translateY(-1px);
+    }
+}
+
+.button-primary {
+    background: $color-primary;
+    color: $color-background;
+    border: none;
+    
+    &:hover {
+        background: $button-background-active;
+        transform: translateY(-2px);
+        box-shadow: $glow-primary;
+    }
+}
+
+.button-secondary {
+    background: transparent;
+    border: $border-width $border-style $color-primary;
+    color: $color-primary;
+    
+    &:hover {
+        background: $color-primary;
+        color: $color-background;
+    }
+}
+
+// Container
+.container {
+    max-width: $content-width;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+// Sections
+.section {
+    padding: nth($spacer-container-all, 1) 0;
+    background-color: $color-background;
+
+    &.alt {
+        background-color: $color-secondary;
+    }
+}
+
+// Cards
+.card {
+    background: $color-secondary;
+    border: $border-width $border-style $color-border;
+    border-radius: $border-radius;
+    padding: $spacing-large;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        border-color: $color-primary;
+        box-shadow: $glow-primary;
+    }
+}
+
+// Responsive
+@media (max-width: $menu-breakpoint) {
+    .navbar {
+        .nav-links {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: $color-background;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+            &.active {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    }
+
+    h1 {
+        font-size: nth($fz-h1-all, 2);
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: nth($fz-h1-all, 3);
+    }
+}

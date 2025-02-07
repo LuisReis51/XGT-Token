@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XGT Logo Export</title>
+</head>
+<body style="margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f0f0f0;">
+    <div style="text-align: center;">
+        <canvas id="logo" width="256" height="256" style="border: 1px solid #ccc; background: white;"></canvas>
+        <br>
+        <button onclick="downloadLogo()" style="margin-top: 20px; padding: 10px 20px; background: #1565C0; color: white; border: none; border-radius: 4px; cursor: pointer;">Download Logo (256x256)</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('logo');
+        const ctx = canvas.getContext('2d');
+        
+        function drawLogo() {
+            const w = canvas.width;
+            const h = canvas.height;
+            const c = w/2;
+            
+            // Clear canvas with transparent background
+            ctx.clearRect(0, 0, w, h);
+            
+            // Draw shield
+            ctx.beginPath();
+            ctx.moveTo(c, h*0.25);
+            ctx.lineTo(c + w*0.25, h*0.425);
+            ctx.lineTo(c + w*0.2, h*0.7);
+            ctx.lineTo(c, h*0.625);
+            ctx.lineTo(c - w*0.2, h*0.7);
+            ctx.lineTo(c - w*0.25, h*0.425);
+            ctx.closePath();
+            
+            // Shield gradient
+            const gradient = ctx.createLinearGradient(c - w*0.25, h*0.25, c + w*0.25, h*0.7);
+            gradient.addColorStop(0, '#1565C0');
+            gradient.addColorStop(1, '#0D47A1');
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Gold border
+            ctx.strokeStyle = '#FFD700';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Draw swords
+            function drawSword(x, y, length, angle, color) {
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(angle);
+                
+                // Blade
+                ctx.beginPath();
+                ctx.moveTo(0, -length*0.7);
+                ctx.lineTo(length*0.06, length*0.1);
+                ctx.lineTo(-length*0.06, length*0.1);
+                ctx.closePath();
+                ctx.fillStyle = color;
+                ctx.fill();
+                ctx.strokeStyle = '#B8B8B8';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+                
+                // Handle
+                ctx.fillStyle = '#FFD700';
+                ctx.fillRect(-length*0.03, length*0.1, length*0.06, length*0.2);
+                
+                // Guard
+                ctx.fillRect(-length*0.15, length*0.05, length*0.3, length*0.05);
+                
+                ctx.restore();
+            }
+            
+            // Draw crossed swords
+            const swordLength = w*0.35;
+            drawSword(c - w*0.0375, c, swordLength, -Math.PI/4, '#E8E8E8');  // Steel sword
+            drawSword(c + w*0.0375, c, swordLength, Math.PI/4, '#CD853F');   // Bronze sword
+            
+            // Draw XGT text
+            ctx.font = 'bold ' + (w*0.15) + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#FFD700';
+            ctx.fillText('XGT', c, h*0.525);
+            ctx.strokeStyle = '#B7950B';
+            ctx.lineWidth = 1.5;
+            ctx.strokeText('XGT', c, h*0.525);
+        }
+        
+        function downloadLogo() {
+            const link = document.createElement('a');
+            link.download = 'xgt-logo-256.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // Draw logo when page loads
+        window.onload = drawLogo;
+    </script>
+</body>
+</html>

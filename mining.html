@@ -1,0 +1,111 @@
+<div class="mining-container">
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">XG Token</a>
+            <div class="nav-links">
+                <a href="/">About</a>
+                <a href="/xgt">XGT</a>
+                <a href="/mining" class="active">XGT Mining</a>
+                <a href="/invest">Invest</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mining-hero">
+        <div class="container">
+            <h1>XGT Mining</h1>
+            <p>Mine XGT tokens directly through your web browser</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="mining-section">
+            <div class="mining-stats">
+                <div class="stat-card">
+                    <span class="value" id="mining-rate">0.00</span>
+                    <span class="label">Mining Rate (XGT/block)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="value" id="blocks-until-claim">5</span>
+                    <span class="label">Blocks Until Claim</span>
+                </div>
+                <div class="stat-card">
+                    <span class="value" id="total-mined">0.00</span>
+                    <span class="label">Total XGT Mined</span>
+                </div>
+                <div class="stat-card">
+                    <span class="value" id="mining-power">1.00x</span>
+                    <span class="label">Mining Power</span>
+                </div>
+            </div>
+
+            <div class="mining-controls">
+                <div class="wallet-section">
+                    <h3>Wallet Connection</h3>
+                    <div class="wallet-status">
+                        <span id="connection-status">Not Connected</span>
+                        <button class="button" id="connect-wallet">Connect Wallet</button>
+                    </div>
+                    <div class="wallet-info">
+                        <p id="wallet-address"></p>
+                        <p id="wallet-balance"></p>
+                    </div>
+                </div>
+
+                <div class="mining-actions">
+                    <h3>Mining Controls</h3>
+                    <div class="mining-status">
+                        <div class="status-indicator">
+                            <span class="status-dot"></span>
+                            <span id="mining-status-text">Mining Inactive</span>
+                        </div>
+                        <button class="button" id="start-mining">Start Mining</button>
+                        <button class="button button-secondary" id="claim-rewards" disabled>Claim Rewards</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mining-info">
+                <div class="info-card">
+                    <h4>Mining Instructions</h4>
+                    <ul>
+                        <li>Connect your wallet using the button above</li>
+                        <li>Click "Start Mining" to begin mining XGT</li>
+                        <li>Wait for 5 blocks to be able to claim rewards</li>
+                        <li>Click "Claim Rewards" to receive your XGT</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>Mining Tips</h4>
+                    <ul>
+                        <li>Keep your browser tab active for optimal mining</li>
+                        <li>Higher mining power means more XGT per block</li>
+                        <li>Mining rate adjusts based on network activity</li>
+                        <li>Claim rewards regularly to secure your XGT</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <span>Excalibur Global Trading USA LLC. All Rights Reserved.</span>
+                </div>
+                <div class="footer-links">
+                    <a href="/legal">Legal Notice</a>
+                    <span>|</span>
+                    <a href="/privacy">Privacy</a>
+                </div>
+                <div class="footer-contact">
+                    <a href="mailto:contact@excaliburglobal.farm">contact@excaliburglobal.farm</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="mining.js"></script>
+</div>

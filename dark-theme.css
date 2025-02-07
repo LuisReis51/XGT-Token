@@ -1,0 +1,56 @@
+/* Dark Theme Base Styles */
+:root {
+    --dark-bg: #0a0a0a;
+    --dark-secondary: #1a1a1a;
+    --accent-green: #2d4b2d;
+    --accent-gold: #e6b800;
+    --text-light: #ffffff;
+    --text-gray: #cccccc;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+}
+
+.elementor-section {
+    background-color: var(--dark-bg);
+}
+
+.elementor-heading-title {
+    color: var(--text-light) !important;
+}
+
+.elementor-icon-box-title {
+    color: var(--accent-gold) !important;
+}
+
+.elementor-icon-box-description {
+    color: var(--text-gray) !important;
+}
+
+.elementor-icon i {
+    color: var(--accent-gold);
+}
+
+/* Custom Button Style */
+.elementor-button {
+    background-color: var(--accent-green) !important;
+    color: var(--text-light) !important;
+    border: 2px solid var(--accent-gold) !important;
+    transition: all 0.3s ease !important;
+}
+
+.elementor-button:hover {
+    background-color: var(--accent-gold) !important;
+    color: var(--dark-bg) !important;
+}
+
+/* Section Gradients */
+.hero-gradient {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--accent-green) 100%) !important;
+}
+
+.token-gradient {
+    background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-secondary) 100%) !important;
+}
