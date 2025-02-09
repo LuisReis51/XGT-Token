@@ -8,7 +8,7 @@ XG Token (XGT) is a minable BEP-20 token on the Binance Smart Chain that combine
 - **Name:** XG Token (XGT)
 - **Network:** Binance Smart Chain (BSC)
 - **Contract:** `0x654E38A4516F5476D723D770382A5EaF8Bae0e0D`
-- **Total Supply:** 1,000,000,000 XGT
+- **Total Supply:** 80,000,000,000 XGT
 - **Trading:** Available on PancakeSwap
 - **Mining:** Web-based mining interface
 - **Contact:** contact@excaliburglobal.farm
