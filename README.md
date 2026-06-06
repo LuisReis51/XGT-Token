@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # XG Token (XGT) - Dual-Mining Protocol on BSC
 
 ## Overview
@@ -84,5 +83,3 @@ Verifiable on BSCScan: Read Contract > `owner()` returns `0x00000000000000000000
 
 ## Legal
 XGT is a utility token. This document is not a prospectus and does not constitute an offer of financial instruments. Token holders have no equity, revenue share, or governance rights in Excalibur Global Trading USA LLC. Always do your own research (DYOR).
-
->>>>>>> 44ed4c13d77dfcfadf369431e84de58e0965b3ce
