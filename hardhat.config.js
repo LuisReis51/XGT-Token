@@ -41,6 +41,6 @@ module.exports = {
     }
   },
   etherscan: {
-    apiKey: "3CI1GGKVDMVHXV7ED7DHXWDJNMAYBAV672"
+    apiKey: process.env.BSCSCAN_API_KEY
   }
 };
