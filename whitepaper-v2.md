@@ -4,7 +4,7 @@
 
 ---
 
-BEP-20 Utility Token on BNB Smart Chain | Ownership Fully Renounced | 60B Effective Max Supply | 40B Burned | Public Proof-of-Work Mining
+BEP-20 Utility Token on BNB Smart Chain | Ownership Fully Renounced | 80B Hard Cap | 40B Minted at Deployment | Public Proof-of-Work Mining
 
 ---
 
@@ -12,7 +12,7 @@ BEP-20 Utility Token on BNB Smart Chain | Ownership Fully Renounced | 60B Effect
 
 XGT is an immutable utility and rewards token on BNB Smart Chain powering a transparent agricultural traceability and sustainability system.
 
-80 billion XGT were minted at deployment. 40 billion have been permanently burned, leaving 40 billion in circulation. 20 billion remain available only through public proof-of-work mining, for an effective max supply of 60 billion.
+40 billion XGT were minted at deployment. 20 billion are held in reserve for mining rewards distribution. The remaining 40 billion can only enter circulation through public proof-of-work mining, up to the 80 billion hard cap enforced in contract code.
 
 **Contract ownership has been fully renounced, meaning no administrative control exists and the contract cannot be modified.**
 
@@ -26,9 +26,10 @@ XGT is an immutable utility and rewards token on BNB Smart Chain powering a tran
 
 | Metric | Value |
 |--------|-------|
-| Effective Max Supply | 60B (40B Circulating + 20B Mineable) |
-| Permanently Burned | 40B |
-| Reserved for Public Mining Only | 20B |
+| Hard Cap (Contract Enforced) | 80B |
+| Minted at Deployment | 40B |
+| Mining Rewards Reserve (Held) | 20B |
+| Available Through Public PoW Mining | 40B |
 | Ownership Status | Fully Renounced (Zero Admin Control) |
 
 ---
@@ -47,15 +48,15 @@ XGT also provides tiered access to the Excalibur Global Land MRV Tool, a sustain
 
 > **Contract ownership has been fully renounced. No address has administrative control, and the contract cannot be modified.**
 
-XGT has a contract hard cap of 100 billion tokens, enforced in code. 80 billion tokens were minted at deployment, of which 40 billion have been permanently burned. 40 billion remain in circulation, and 20 billion can only be generated through public proof-of-work mining, for an effective maximum supply of 60 billion. No function exists that allows the project team to mint additional tokens.
+XGT has a contract hard cap of 80 billion tokens, enforced in code. 40 billion tokens were minted at deployment: 4 billion for initial liquidity, 16 billion for team and development, and 20 billion held in reserve for mining rewards distribution. The remaining 40 billion can only be generated through public proof-of-work mining. No function exists that allows the project team to mint additional tokens.
 
-### 80 Billion Minted at Deployment, 40 Billion Burned
+### 40 Billion Minted at Deployment
 
-80 billion tokens were minted at deployment. 40 billion have since been permanently burned (sent to a dead address), reducing the circulating supply to 40 billion. The remaining circulating tokens are used for development, partnerships, and automated reward distribution through on-chain mechanisms.
+40 billion tokens were minted at deployment across three allocations: 4 billion for initial liquidity, 16 billion for team and development, and 20 billion held in reserve for mining rewards distribution. These tokens are subject to the fixed hard cap and cannot be increased.
 
-### 20 Billion Available Through Public Mining
+### 40 Billion Available Through Public Mining
 
-The remaining 20 billion XGT can enter circulation only through public browser-based proof-of-work mining. Any wallet may mine with no permission required. Mining stops automatically and permanently once the contract hard cap is reached. With 40 billion burned, the effective maximum supply that can ever be in circulation is 60 billion. The team cannot mint new tokens at any time.
+The remaining 40 billion XGT can enter circulation only through public browser-based proof-of-work mining. Any wallet may mine with no permission required. Mining stops automatically and permanently once the 80 billion contract hard cap is reached. The team cannot mint new tokens at any time.
 
 ### Independently Verifiable on BscScan (No Account Required)
 
@@ -65,8 +66,8 @@ Every claim below can be confirmed using the public BscScan block explorer. No w
 |-------|--------------|--------|
 | Ownership renounced | BscScan > Read Contract > owner() returns the zero address | Confirmed |
 | No admin mint function | BscScan > Contract ABI > only the public mine() function exists; no owner mint is present | Confirmed |
-| 100B contract cap, 60B effective | BscScan > Read Contract > MAX_SUPPLY() returns 100,000,000,000. With 40B permanently burned, effective max supply is 60B. | Confirmed |
-| 80B minted at deploy, 40B burned | BscScan > Read Contract > INITIAL_SUPPLY() confirms 80,000,000,000 XGT. 40B subsequently burned (verifiable on BSCScan). | Confirmed |
+| 80B hard cap enforced in contract | BscScan > Read Contract > maxSupply() returns 80,000,000,000 | Confirmed |
+| 40B minted at deployment | BscScan > Read Contract > totalSupply() confirms ~40,000,000,000 XGT currently in circulation | Confirmed |
 
 **BSC Contract:** `0x654E38A4516F5476D723D770382A5EaF8Bae0e0D` - [Open BscScan Read Contract](https://bscscan.com/address/0x654E38A4516F5476D723D770382A5EaF8Bae0e0D#readContract)
 
@@ -75,9 +76,9 @@ Every claim below can be confirmed using the public BscScan block explorer. No w
 #### BNB Smart Chain (Primary)
 - **Contract:** `0x654E38A4516F5476D723D770382A5EaF8Bae0e0D`
 - **Network:** BNB Smart Chain | **Standard:** BEP-20
-- **Contract Hard Cap:** 100,000,000,000 XGT | **Minted at Launch:** 80,000,000,000 XGT | **Burned:** 40,000,000,000 XGT
-- **Effective Max Supply:** 60,000,000,000 XGT (40B circulating + 20B mineable)
-- **Mining Reserve:** 20,000,000,000 XGT (public proof-of-work only)
+- **Contract Hard Cap:** 80,000,000,000 XGT | **Minted at Launch:** 40,000,000,000 XGT
+- **Current Circulating Supply:** ~40,000,000,000 XGT
+- **Mining Reserve (Held):** 20,000,000,000 XGT | **Available Through Public PoW Mining:** 40,000,000,000 XGT
 - **Ownership:** Fully Renounced
 - **Anti-dump protections:** Max transfer 800M XGT | Max wallet 1.6B XGT | 1-hour transfer cooldown
 - **Compatible with:** MetaMask, WalletConnect, Trust Wallet - [View on BscScan](https://bscscan.com/token/0x654E38A4516F5476D723D770382A5EaF8Bae0e0D)
