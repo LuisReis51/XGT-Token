@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XGT Token Whitepaper | BEP-20 Utility Token | 80B Hard Cap | BNB Smart Chain</title>
+    <meta name="description" content="XGT Token official whitepaper. BEP-20 utility token on BNB Smart Chain with fully renounced ownership, 40B minted at deployment, 80B hard cap, and public proof-of-work mining.">
+    <meta name="keywords" content="XGT token, XG Token, BEP-20, BNB Smart Chain, proof-of-work mining, 80 billion hard cap, 40 billion minted, renounced ownership, utility token, Excalibur Global, browser mining, PancakeSwap">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Excalibur Global Trading USA LLC">
+    <link rel="canonical" href="https://excaliburglobal.farm/whitepaper">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://excaliburglobal.farm/whitepaper">
+    <meta property="og:title" content="XGT Token Whitepaper | 80B Hard Cap | Ownership Renounced">
+    <meta property="og:description" content="XGT Token official whitepaper. BEP-20 on BNB Smart Chain. 40B minted at deployment, 20B mining reserve, 40B public PoW mining, 80B hard cap. Fully renounced ownership.">
+    <meta property="og:image" content="https://excaliburglobal.farm/assets/xgt-whitepaper-preview.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://excaliburglobal.farm/whitepaper">
+    <meta property="twitter:title" content="XGT Token Whitepaper | 80B Hard Cap | Ownership Renounced">
+    <meta property="twitter:description" content="XGT: BEP-20 on BNB Smart Chain. 40B minted at deployment, 20B mining reserve, 40B public PoW mining, 80B hard cap. Fully renounced ownership.">
+    <meta property="twitter:image" content="https://excaliburglobal.farm/assets/xgt-whitepaper-preview.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.4em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .header .tagline {
+            font-size: 1.1em;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            font-size: 2.2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            font-size: 1.6em;
+            color: #34495e;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+        
+        .section p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #28a745;
+            margin: 25px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .feature-item h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .roadmap {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .roadmap-item {
+            display: flex;
+            margin-bottom: 25px;
+            align-items: center;
+        }
+        
+        .roadmap-status {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .status-complete {
+            background: #28a745;
+        }
+        
+        .status-progress {
+            background: #ffc107;
+        }
+        
+        .status-planned {
+            background: #6c757d;
+        }
+        
+        .contact {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .contact h3 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        .contact p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Laser border notice */
+        .laser-box {
+            position: relative;
+            border-radius: 14px;
+            padding: 22px 26px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 100%);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+            overflow: hidden;
+            margin: 25px 0;
+        }
+        .laser-box::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background: conic-gradient(
+                from 0deg,
+                #00e5ff,
+                #7c4dff,
+                #ff2bd6,
+                #00ff87,
+                #00e5ff
+            );
+            border-radius: 16px;
+            animation: laserSpin 4s linear infinite;
+        }
+        .laser-box::after {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            background: linear-gradient(135deg, #ffffff 0%, #f6f8fb 100%);
+            border-radius: 12px;
+        }
+        .laser-box > * {
+            position: relative;
+            z-index: 1;
+        }
+        .laser-title {
+            display: inline-block;
+            font-size: 1.15em;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .laser-badge {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 4px 10px;
+            font-size: 0.82em;
+            font-weight: 700;
+            color: #0b2b3a;
+            background: rgba(0,229,255,0.14);
+            border: 1px solid rgba(0,229,255,0.35);
+            border-radius: 999px;
+        }
+        .laser-text {
+            font-size: 1.05em;
+            color: #34495e;
+            margin: 0;
+            text-align: justify;
+        }
+        @keyframes laserSpin {
+            to { transform: rotate(360deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .laser-box::before { animation: none; }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>XGT TOKEN</h1>
+            <div class="subtitle" style="font-size:1.35em; font-weight:600; letter-spacing:0.01em; margin-bottom:10px;">XGT is a blockchain-powered agricultural infrastructure that verifies farm origin, rewards sustainable production, and connects global food supply chains with decentralized finance.</div>
+            <div class="tagline">Mine XGT. Earn Rewards. Verify Farm-to-Shelf Provenance. Powered by BNB Smart Chain.</div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Executive Summary</h2>
+                <p>XGT is a utility and rewards token powering the Excalibur Global ecosystem. It is used to access platform features, earn participation rewards through proof-of-work mining, and support community engagement. Our ecosystem includes advanced MRV (Monitoring, Reporting, Verification) sustainability tools backed by established scientific methodologies.</p>
+
+                <div class="laser-box">
+                    <div class="laser-title">Why XGT? <span class="laser-badge">Ecosystem Value</span></div>
+                    <p class="laser-text"><strong>Mine XGT through proof-of-work and earn rewards directly to your wallet.</strong> XGT holders gain access to Excalibur Global platform features and participate in a transparently capped ecosystem. <strong>40 billion XGT were minted at deployment</strong>: 4B for initial liquidity, 16B for team/development, and 20B held in reserve for mining rewards distribution. The remaining 40 billion can only enter circulation through public proof-of-work mining, up to the <strong>80 billion hard cap enforced in contract code</strong>. <strong>Contract ownership is fully renounced.</strong> No address, including the original deployer, has any administrative control.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>Strategic Vision</h3>
+                    <p>To provide accessible, professional-grade MRV and sustainability reporting tools enabling farmers, governments, and corporations to conduct environmental assessments with 90%+ accuracy at a fraction of traditional consulting costs, while rewarding platform participation through the XGT token.</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="number">$100B+</div>
+                        <div class="label">Sustainability Reporting Market by 2030</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">90%+</div>
+                        <div class="label">Scientific Accuracy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">10K+</div>
+                        <div class="label">Platform Reports Target</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">2</div>
+                        <div class="label">Core MRV Tools</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Land MRV Tool - Production Ready</h2>
+                <p><strong>Status:</strong> Complete & Operational</p>
+                <p>Our flagship Land MRV (Monitoring, Reporting, Verification) Tool enables professional-grade environmental footprint assessment for agricultural operations with government-approved accuracy.</p>
+                
+                <h3>Key Features</h3>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>Multi-Crop System</h4>
+                        <p>18 crop types covering all CBOT-traded commodities with dynamic crop selection and percentage validation</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Advanced Energy Analysis</h4>
+                        <p>6 energy sources with percentage-based energy mix calculations and renewable energy credit tracking</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Sustainability Assessment</h4>
+                        <p>Government-aligned methodologies with voluntary and compliance market pricing tiers, in accordance with internationally recognized standards</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Professional Reporting</h4>
+                        <p>PDF/JSON export with Google Sheets integration and regulatory methodology citations</p>
+                    </div>
+                </div>
+                
+                <h3>Scientific Standards</h3>
+                <ul style="font-size: 1.1em; margin-left: 20px;">
+                    <li><strong>IPCC 2019 Guidelines:</strong> Official climate methodology compliance</li>
+                    <li><strong>EPA eGRID 2022:</strong> Current US energy emission factors</li>
+                    <li><strong>ISO 14064:</strong> International GHG verification standards</li>
+                    <li><strong>USDA / EPA Frameworks:</strong> US government agricultural and environmental standards</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Blue Carbon Tool - Development Phase</h2>
+                <p><strong>Status:</strong> Planning Phase Complete</p>
+                <p>The Blue Carbon Tool will be the world's most comprehensive marine ecosystem database, enabling marine life tracking, oxygen production analysis, and blue carbon sequestration assessment.</p>
+                
+                <h3>Planned Capabilities</h3>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>10,000+ Species Database</h4>
+                        <p>Comprehensive marine life tracking including vertebrates, invertebrates, and marine plants</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Oxygen Production Analysis</h4>
+                        <p>Real-time O2 generation calculations from seagrass, mangroves, and coral reefs</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Carbon Sequestration</h4>
+                        <p>Advanced blue carbon storage assessment with above and below-ground measurements</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Ecosystem Monitoring</h4>
+                        <p>Water quality, habitat condition, and threat assessment capabilities</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Business Model & Market Strategy</h2>
+                
+                <h3>Three-Tier Platform Service Model</h3>
+                <div class="highlight-box">
+                    <p><strong>Tier 1:</strong> MRV Tools (screening / assessment) - Free basic assessments</p>
+                    <p><strong>Tier 2:</strong> Professional verification - Third-party review services</p>
+                    <p><strong>Tier 3:</strong> Registry submission support - Professional services</p>
+                </div>
+                
+                <h3>Revenue Streams</h3>
+                <ul style="font-size: 1.1em; margin-left: 20px; margin-bottom: 20px;">
+                    <li>SaaS subscriptions for premium features</li>
+                    <li>API licensing for verification companies</li>
+                    <li>White-label solutions for government agencies</li>
+                    <li>Professional verification services</li>
+                    <li>Marine ecosystem database licensing</li>
+                </ul>
+                
+            </div>
+
+            <div class="section">
+                <h2>Blockchain Infrastructure Specification</h2>
+                <p>The Excalibur Global platform is built on a layered blockchain infrastructure deployed on BNB Smart Chain (BSC). The architecture separates on-chain identity and event anchoring from off-chain document storage, using Chainlink oracles to bridge real-world agricultural data to the ledger. Every layer is publicly readable without authentication, enabling trustless consumer verification and regulatory auditability.</p>
+
+                <div class="laser-box">
+                    <div class="laser-title">Design Invariants <span class="laser-badge">Non-Negotiable</span></div>
+                    <p class="laser-text"><strong>Immutability:</strong> once written, no record can be altered or deleted. <strong>Public readability:</strong> all chain state is readable via free BSC RPC with no API key. <strong>Off-chain privacy:</strong> no personal farmer data appears on the public ledger - only cryptographic commitments. <strong>No central gatekeeper:</strong> consumers, auditors, and regulators can independently verify every record without involving Excalibur Global servers.</p>
+                </div>
+
+                <h3>Smart Contract Architecture</h3>
+                <p>Five Solidity 0.8.x contracts form the core protocol. Each contract has a single, well-defined responsibility and emits indexed events consumable by the public verification frontend.</p>
+
+                <div style="overflow-x:auto; margin: 20px 0;">
+                <table style="width:100%; border-collapse:collapse; font-size:0.97em;">
+                    <thead>
+                        <tr style="background:#2c3e50; color:white;">
+                            <th style="padding:10px 14px; text-align:left;">Contract</th>
+                            <th style="padding:10px 14px; text-align:left;">Standard</th>
+                            <th style="padding:10px 14px; text-align:left;">Responsibility</th>
+                            <th style="padding:10px 14px; text-align:left;">Deployer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid #e0e0e0;">
+                            <td style="padding:9px 14px;"><code>XGTFarmRegistry.sol</code></td>
+                            <td style="padding:9px 14px;">ERC-721</td>
+                            <td style="padding:9px 14px;">Farm identity NFTs, GPS anchoring, cooperative structure</td>
+                            <td style="padding:9px 14px;">Excalibur Global</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #e0e0e0; background:#f9f9f9;">
+                            <td style="padding:9px 14px;"><code>XGTHarvestBatch.sol</code></td>
+                            <td style="padding:9px 14px;">ERC-721</td>
+                            <td style="padding:9px 14px;">Harvest batch tokenization, sustainability scoring, IPFS metadata</td>
+                            <td style="padding:9px 14px;">Excalibur Global</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #e0e0e0;">
+                            <td style="padding:9px 14px;"><code>XGTSupplyChain.sol</code></td>
+                            <td style="padding:9px 14px;">Custom</td>
+                            <td style="padding:9px 14px;">Custody transfer events, anomaly flags, cross-border tracking</td>
+                            <td style="padding:9px 14px;">Excalibur Global</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #e0e0e0; background:#f9f9f9;">
+                            <td style="padding:9px 14px;"><code>XGTVerification.sol</code></td>
+                            <td style="padding:9px 14px;">Custom</td>
+                            <td style="padding:9px 14px;">QR code registry, consumer-facing read interface, scan event logging</td>
+                            <td style="padding:9px 14px;">Excalibur Global</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:9px 14px;"><code>XGTRewards.sol</code></td>
+                            <td style="padding:9px 14px;">Custom</td>
+                            <td style="padding:9px 14px;">Automated XGT reward distribution to farmers, processors, retailers</td>
+                            <td style="padding:9px 14px;">Excalibur Global</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>XGTFarmRegistry.sol - Key Interface</h4>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:14px; border-radius:6px; font-size:0.8em; overflow-x:auto; white-space:pre;">function registerFarm(
+  string calldata farmId,
+  string calldata ipfsCID,
+  bytes32 gpsHash,
+  address[] calldata signers
+) external returns (uint256 tokenId);
+
+function updateGPS(uint256 tokenId, bytes32 newGpsHash) external;
+function addAuthorizedSigner(uint256 tokenId, address signer) external;
+function verifyFarmStatus(uint256 tokenId) external view
+  returns (bool active, uint256 lastVerified, bytes32 gpsHash);
+
+event FarmRegistered(uint256 indexed tokenId, string farmId, bytes32 gpsHash);
+event GPSVerified(uint256 indexed tokenId, bytes32 ndviHash, uint256 timestamp);
+event SignerAdded(uint256 indexed tokenId, address indexed signer);</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>XGTHarvestBatch.sol - Key Interface</h4>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:14px; border-radius:6px; font-size:0.8em; overflow-x:auto; white-space:pre;">function mintBatch(
+  uint256 farmTokenId,
+  string calldata batchId,
+  string calldata ipfsCID,
+  uint8  sustainabilityScore,
+  uint32 weightKg,
+  uint8  cropCode
+) external returns (uint256 batchTokenId);
+
+function splitBatch(
+  uint256 parentTokenId,
+  uint32[] calldata childWeightsKg
+) external returns (uint256[] memory childTokenIds);
+
+event BatchMinted(uint256 indexed batchTokenId, uint256 indexed farmTokenId,
+  string batchId, uint8 score, uint256 timestamp);
+event BatchSplit(uint256 indexed parentTokenId, uint256[] childTokenIds);</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>XGTSupplyChain.sol - Key Interface</h4>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:14px; border-radius:6px; font-size:0.8em; overflow-x:auto; white-space:pre;">function acceptHandoff(
+  uint256 batchTokenId,
+  bytes32 conditionHash,
+  bytes32 locationHash
+) external;
+
+function flagAnomaly(
+  uint256 batchTokenId,
+  string calldata anomalyCode
+) external;
+
+function getFullCustodyChain(uint256 batchTokenId)
+  external view returns (CustodyRecord[] memory);
+
+event HandoffAccepted(uint256 indexed batchTokenId,
+  address indexed from, address indexed to,
+  bytes32 conditionHash, uint256 timestamp);
+event AnomalyFlagged(uint256 indexed batchTokenId,
+  string anomalyCode, uint256 timestamp);</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>XGTRewards.sol - Key Interface</h4>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:14px; border-radius:6px; font-size:0.8em; overflow-x:auto; white-space:pre;">function addMiningReward(address miner, uint256 amount) external;
+function claimRewards() external;
+function getPendingRewards(address miner)
+  external view returns (uint256);
+function canClaim(address miner)
+  external view returns (
+    bool eligible,
+    uint256 pendingAmount,
+    uint256 cooldownEnds,
+    string memory reason
+  );
+
+// Limits (contract-enforced)
+// MAX_CLAIM_PER_TX:  1,000 XGT
+// DAILY_CLAIM_LIMIT: 5,000 XGT
+// CLAIM_COOLDOWN:    10 minutes</pre>
+                    </div>
+                </div>
+
+                <h3>Data Storage System - Decentralized Architecture</h3>
+                <p>On-chain storage is limited to cryptographic commitments (hashes and CIDs). All documents, images, and structured metadata are stored on IPFS and referenced immutably from the blockchain. This design keeps BSC transaction costs minimal while ensuring data permanence.</p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>IPFS Document Schema</h4>
+                        <p>Each Farm ID NFT and Harvest Batch NFT stores a single IPFS CID in its token metadata. That CID resolves to a structured JSON document pinned to IPFS:</p>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:14px; border-radius:6px; font-size:0.8em; overflow-x:auto; white-space:pre;">// Farm Registration Document (IPFS)
+{
+  "farmId": "XGF-CM-LIT-00142",
+  "registrationDate": "2026-03-01T00:00:00Z",
+  "country": "CM", "region": "Littoral",
+  "geoJsonCID": "Qm...",         // boundary polygon
+  "kycDocCID":  "Qm...",         // hashed KYC proof
+  "cooperativeId": "COOP-002",
+  "satelliteVerifyCID": "Qm..."  // NDVI snapshot
+}
+
+// Harvest Batch Document (IPFS)
+{
+  "batchId": "XGB-XGF-CM-LIT-00142-SOY-20260310-001",
+  "farmId": "XGF-CM-LIT-00142",
+  "cropType": "SOY", "variety": "Williams 82",
+  "harvestDate": "2026-03-10",
+  "weightKg": 4200,
+  "irrigationMethod": "drip",
+  "fertilizerType": "organic",
+  "waterUsageLitersPerHa": 320,
+  "soilHealthScore": 84,
+  "sustainabilityScore": 91,
+  "ndviAtHarvest": 0.72,
+  "certificateCID": "Qm..."
+}</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Pinning Strategy</h4>
+                        <p><strong>Primary:</strong> Pinata cloud pinning service - all CIDs are pinned on document creation.</p>
+                        <p><strong>Redundancy:</strong> Excalibur Global runs a local IPFS node with all CIDs re-pinned. Failure of either node leaves the other serving data.</p>
+                        <p><strong>Public access:</strong> All IPFS content is readable by anyone via public IPFS gateways (<code>ipfs.io/ipfs/[CID]</code>, <code>cloudflare-ipfs.com/ipfs/[CID]</code>). No API key, no authentication.</p>
+                        <p><strong>On-chain anchor:</strong> CIDs are stored in NFT token metadata URI and cannot be changed post-mint. Any document alteration produces a different CID that would not match the on-chain record.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>MRV Platform Storage</h4>
+                        <p><strong>Report generation:</strong> User-initiated MRV assessments produce structured JSON reports. These are optionally exported as PDF (jsPDF) or CSV (Google Sheets integration). Enterprise users can auto-save reports to their Google Drive via OAuth2.</p>
+                        <p><strong>No server-side data:</strong> All MRV calculations are performed client-side in browser JavaScript. No user data is transmitted to Excalibur Global servers during report generation. Only voluntary submission for verification sends data off-device.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Satellite Data Storage</h4>
+                        <p>NDVI snapshots and land-cover classification images retrieved via Chainlink oracle from Sentinel-2 and Landsat-9 are stored as IPFS CIDs. Images are not stored on-chain - only the CID and a SHA-256 hash of the raw NDVI value are written to the <code>XGTFarmRegistry</code> contract. The full raster data is pinned to IPFS and linked from the farm NFT metadata.</p>
+                    </div>
+                </div>
+
+                <h3>XGT Token Integration - Reward Trigger Specification</h3>
+                <p>Every on-chain event in the supply chain protocol can trigger an automated XGT reward. The <code>XGTRewards</code> contract listens to events emitted by the other four contracts and computes reward amounts deterministically from on-chain data. No manual approval by the Excalibur Global team is required for any reward payment.</p>
+
+                <div style="overflow-x:auto; margin: 20px 0;">
+                <table style="width:100%; border-collapse:collapse; font-size:0.95em;">
+                    <thead>
+                        <tr style="background:#2c3e50; color:white;">
+                            <th style="padding:10px 14px; text-align:left;">Trigger Event</th>
+                            <th style="padding:10px 14px; text-align:left;">Contract</th>
+                            <th style="padding:10px 14px; text-align:left;">Recipient</th>
+                            <th style="padding:10px 14px; text-align:left;">Base Reward</th>
+                            <th style="padding:10px 14px; text-align:left;">Multiplier Condition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid #e0e0e0;">
+                            <td style="padding:9px 14px;"><code>FarmRegistered</code></td>
+                            <td style="padding:9px 14px;">XGTFarmRegistry</td>
+                            <td style="padding:9px 14px;">Farmer wallet</td>
+                            <td style="padding:9px 14px;">500 XGT</td>
+                            <td style="padding:9px 14px;">GPS oracle verified: +200 XGT</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #e0e0e0; background:#f9f9f9;">
+                            <td style="padding:9px 14px;"><code>BatchMinted</code></td>
+                            <td style="padding:9px 14px;">XGTHarvestBatch</td>
+                            <td style="padding:9px 14px;">Farmer wallet</td>
+                            <td style="padding:9px 14px;">100 XGT</td>
+                            <td style="padding:9px 14px;">Score &gt;70: +1 XGT per score point above 70</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #e0e0e0;">
+                            <td style="padding:9px 14px;"><code>GPSVerified</code></td>
+                            <td style="padding:9px 14px;">XGTFarmRegistry</td>
+                            <td style="padding:9px 14px;">Farmer wallet</td>
+                            <td style="padding:9px 14px;">50 XGT/yr</td>
+                            <td style="padding:9px 14px;">Annual re-verify only</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #e0e0e0; background:#f9f9f9;">
+                            <td style="padding:9px 14px;"><code>HandoffAccepted</code> (on time)</td>
+                            <td style="padding:9px 14px;">XGTSupplyChain</td>
+                            <td style="padding:9px 14px;">Receiving partner</td>
+                            <td style="padding:9px 14px;">25 XGT</td>
+                            <td style="padding:9px 14px;">Reliability score &gt;90%: 1.5x multiplier</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:9px 14px;">Monthly scan volume (retailer)</td>
+                            <td style="padding:9px 14px;">XGTVerification</td>
+                            <td style="padding:9px 14px;">Retailer wallet</td>
+                            <td style="padding:9px 14px;">1 XGT per 100 scans</td>
+                            <td style="padding:9px 14px;">Capped at 500 XGT/month per outlet</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <div class="feature-item" style="margin: 0 0 25px 0; padding: 18px 20px; border-left: 4px solid #3498db;">
+                    <h4 style="color: #1a5276; margin-bottom: 8px;">Reward Formula</h4>
+                    <p style="margin: 0 0 8px 0;"><code>reward = baseReward + (multiplierConditionMet ? bonusAmount : 0)</code></p>
+                    <p style="margin: 0 0 8px 0;">All reward amounts are stored as constants in <code>XGTRewards.sol</code> and cannot be changed without a published contract update. The contract enforces a maximum single-claim of 1,000 XGT and a daily wallet limit of 5,000 XGT. All rewards are funded from the Creator/Ecosystem Wallet allocation - the contract checks available balance before every distribution and reverts if underfunded, ensuring farmers are never promised rewards the contract cannot pay.</p>
+                </div>
+
+                <h3>MRV Platform - Application Stack</h3>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>Client Application</h4>
+                        <p>Pure HTML5/CSS3/JavaScript - zero framework dependency. Runs entirely in-browser with no backend API calls during assessment. Compatible with Chrome, Firefox, Safari, Edge. Responsive design for desktop, tablet, and mobile. Offline-capable via Service Worker cache.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Report Export</h4>
+                        <p>jsPDF for PDF generation with methodology citations. Chart.js for visual data rendering. Google Sheets API (optional) for enterprise data archiving. JSON export for programmatic consumption by third-party auditors.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Blockchain Interface</h4>
+                        <p>ethers.js v6 for all contract interactions. MetaMask and WalletConnect for transaction signing. Six BSC RPC endpoints with auto-failover for read operations - no user wallet required to read supply chain data. Write operations (farm registration, batch submission) require a connected wallet.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Security Architecture</h4>
+                        <p>No private keys stored client-side. All contract writes use MetaMask signing - the platform never handles a user's private key. IPFS CID integrity is verified client-side before display (SHA-256 re-computation). HTTPS enforced on all endpoints. No personal data transmitted to Excalibur Global servers without explicit user action.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Agricultural Traceability Protocol - Technical Specification</h2>
+                <p>The Excalibur Global agricultural traceability system is a five-contract protocol on BNB Smart Chain that transforms every farm, harvest, and supply chain handoff into a permanent, publicly verifiable on-chain record. The system is designed to meet EU Deforestation Regulation (EUDR) due diligence requirements and US USDA import traceability standards while remaining operable by farmers in low-connectivity regions of Africa and South America.</p>
+
+                <div class="laser-box">
+                    <div class="laser-title">Protocol Guarantees <span class="laser-badge">Enforced On-Chain</span></div>
+                    <p class="laser-text">Every farm identity is a permanent NFT. Every harvest is a tokenized batch with an immutable sustainability score. Every custody transfer is a non-repudiable signed event. Every anomaly flag is permanent and visible to consumers. XGT rewards flow automatically from verified data - no manual Excalibur Global approval at any step. Any consumer with a smartphone can independently verify the full provenance of any product without a wallet, an account, or any crypto knowledge.</p>
+                </div>
+
+                <h3>1. Farm Identity Protocol</h3>
+                <p>Farm registration is the entry point to the traceability network. It produces a Farm Identity Token (FIT) - an ERC-721 NFT whose token ID is the canonical identifier for every downstream harvest batch and supply chain event from that farm. Registration is a one-time, permanent, on-chain operation.</p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>Registration Flow - Step by Step</h4>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:12px; border-radius:6px; font-size:0.78em; line-height:1.7; overflow-x:auto; white-space:pre;">Step 1 - FARMER (Mobile App, offline-capable)
+  Collects: operator name, cooperative ID, government land title number,
+            GPS boundary as GeoJSON polygon, soil type, crop history
+
+Step 2 - APP (on connectivity restore)
+  Hashes KYC fields: SHA-256(name + coopId + titleNumber)
+  Pins farm document JSON to IPFS via Pinata -> returns CID
+  Pins GeoJSON boundary separately -> returns geoCID
+
+Step 3 - APP calls XGTFarmRegistry.registerFarm()
+  Params: farmId (XGF-CC-RR-NNNNN), ipfsCID, gpsHash, signerAddresses[]
+  Gas cost: ~0.002 BNB (~$0.80 at current prices)
+  Contract mints ERC-721 token -> emits FarmRegistered event
+
+Step 4 - CHAINLINK ORACLE (automated, ~5-15 min)
+  Queries Sentinel-2 / Landsat-9 NDVI at farm centroid
+  Returns: ndviValue (float*100 as uint16), landCoverClass (uint8)
+  Contract stores keccak256(ndviValue, timestamp) on-chain
+  Emits GPSVerified event -> triggers 200 XGT bonus to farmer wallet</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Farm ID Naming Convention</h4>
+                        <p>Each Farm ID encodes its geography for human readability while remaining unique:</p>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:12px; border-radius:6px; font-size:0.8em; overflow-x:auto; white-space:pre;">XGF - [CC] - [RR] - [NNNNN]
+ |      |      |       |
+ |      |      |       Sequence number (zero-padded, global)
+ |      |      Region code (2-4 chars, ISO 3166-2 subdivision)
+ |      Country code (ISO 3166-1 alpha-2)
+ Excalibur Global Farm prefix
+
+Examples:
+  XGF-CM-LIT-00142  (Cameroon / Littoral / Farm 142)
+  XGF-BR-PAR-00891  (Brazil / Para / Farm 891)
+  XGF-LR-MGB-00023  (Liberia / Margibi / Farm 23)
+  XGF-US-IND-01240  (USA / Indiana / Farm 1240)</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>GPS and Satellite Verification</h4>
+                        <p>The GeoJSON polygon submitted at registration is stored off-chain (IPFS). On-chain, only <code>keccak256(geoJsonString)</code> is stored - this anchors the boundary without exposing exact coordinates publicly.</p>
+                        <p>The Chainlink oracle job requests a composite verification: (1) NDVI value from the most recent Sentinel-2 overpass within 10 days of registration, (2) land-cover classification confirming agricultural use, (3) area calculation confirming polygon is plausibly farm-sized (0.5 ha minimum). All three checks must pass for <code>GPSVerified</code> to emit. Annual re-verification is triggered automatically by the contract 365 days after the last verification.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Cooperative and Multi-Signer Structure</h4>
+                        <p>One cooperative wallet can own multiple Farm ID NFTs. Individual farmers in the cooperative are registered as authorized signers via <code>addAuthorizedSigner(tokenId, signerAddress)</code>. Only an authorized signer can mint harvest batches for that farm. Signers can be added or removed by the NFT owner. All signer changes emit <code>SignerAdded</code> / <code>SignerRemoved</code> events and are permanently visible in the event log.</p>
+                        <p>This structure supports large cooperatives (e.g., Cameroon palm cooperatives with 200+ member farms) while maintaining per-farmer accountability on-chain.</p>
+                    </div>
+                </div>
+
+                <h3>2. Harvest Batch Tokenization</h3>
+                <p>Each harvest event produces a Harvest Batch Token (HBT) - an ERC-721 NFT minted by <code>XGTHarvestBatch.sol</code>. The HBT is the primary unit of traceability: it travels through the supply chain, is split by processors, and is ultimately linked to retail QR codes. Its sustainability score is computed at mint time and is immutable.</p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>Batch ID Format and Encoding</h4>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:12px; border-radius:6px; font-size:0.78em; overflow-x:auto; white-space:pre;">XGB - [FARM_ID] - [CROP] - [YYYYMMDD] - [SEQ]
+
+Example:
+  XGB-XGF-CM-LIT-00142-SOY-20260310-001
+
+Where:
+  XGB         = Excalibur Global Batch prefix
+  FARM_ID     = Full Farm ID (links back to FIT NFT)
+  CROP        = 3-char crop code (SOY, COR, COT, PAL, COC, RIC...)
+  YYYYMMDD    = Harvest date UTC
+  SEQ         = Daily sequence number (resets each day per farm)
+
+This full ID is encoded into every QR code for that batch.</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>On-Chain Data Fields (stored in NFT)</h4>
+                        <p>The following fields are stored directly in contract storage and readable on-chain without IPFS:</p>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:12px; border-radius:6px; font-size:0.78em; overflow-x:auto; white-space:pre;">uint256  farmTokenId          // links to XGTFarmRegistry NFT
+string   batchId              // full XGB-... identifier
+bytes32  ipfsCID              // IPFS CID of full batch document
+uint8    sustainabilityScore  // 0-100, computed at mint, immutable
+uint32   weightKg             // harvest weight
+uint8    cropCode             // enum: SOY=1, COR=2, COT=3...
+uint40   harvestTimestamp     // UTC unix timestamp
+address  farmerWallet         // authorized signer who minted
+bool     qrActivated          // set true when retailer registers QR</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Sustainability Score Algorithm</h4>
+                        <p>The score (0-100) is computed deterministically from submitted agronomic data at mint time. It cannot be changed post-mint. The formula is encoded in the contract:</p>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:12px; border-radius:6px; font-size:0.78em; overflow-x:auto; white-space:pre;">score = 0
+  + irrigationScore(irrigationMethod)    // drip=30, rain=20, flood=5
+  + fertilizerScore(fertilizerType)      // organic=25, synthetic=10
+  + waterScore(litersPerHa)             // &lt;300=20, 300-600=12, &gt;600=5
+  + soilHealthScore(soilScore)          // (soilScore / 100) * 15
+  + ndviBonus(ndviValue)               // ndvi&gt;0.6=10, ndvi&gt;0.4=5, else=0
+
+// IPCC 2019 + USDA/EPA baseline weighting applied to each component
+// Maximum possible score: 100
+// XGT bonus multiplier: activated at score &gt; 70</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Batch Split Protocol</h4>
+                        <p>When a processor divides one batch into multiple shipments, <code>splitBatch(parentTokenId, childWeightsKg[])</code> is called. The contract:</p>
+                        <ul style="font-size:0.97em; margin-left:18px; line-height:1.7;">
+                            <li>Validates that child weights sum to parent weight (within 2% tolerance for processing loss)</li>
+                            <li>Burns the parent HBT</li>
+                            <li>Mints N child HBTs, each inheriting <code>farmTokenId</code>, <code>sustainabilityScore</code>, and <code>parentBatchId</code></li>
+                            <li>Emits <code>BatchSplit(parentTokenId, childTokenIds[])</code> - permanently links children to origin</li>
+                        </ul>
+                        <p>Child batches carry the full provenance of their parent. Consumers scanning a child batch QR see the original farm origin, sustainability score, and the split event in the chain history.</p>
+                    </div>
+                </div>
+
+                <h3>3. Supply Chain Event Tracking</h3>
+                <p>The <code>XGTSupplyChain</code> contract records every custody transfer and condition check as an immutable, indexed on-chain event. There is no central database - the BSC event log is the source of truth for the entire supply chain history of every batch.</p>
+
+                <div class="stats-grid" style="margin: 20px 0;">
+                    <div class="stat-card">
+                        <div class="number">Farm</div>
+                        <div class="label">mintBatch() - HBT created - farmer initiates first handoff</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">Processor</div>
+                        <div class="label">acceptHandoff() - records facility ID, processing type, output weight</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">Distributor</div>
+                        <div class="label">acceptHandoff() - records transport route hash, cold chain data</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">Retailer</div>
+                        <div class="label">activateQR() - final custody, QR goes live for consumer scanning</div>
+                    </div>
+                </div>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>Handoff Event Schema</h4>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:12px; border-radius:6px; font-size:0.78em; overflow-x:auto; white-space:pre;">event HandoffAccepted(
+  uint256 indexed batchTokenId,
+  address indexed fromAddress,
+  address indexed toAddress,
+  bytes32 conditionHash,   // keccak256(temp, humidity, weight, notes)
+  bytes32 locationHash,    // keccak256(facilityId, GPS centroid)
+  uint8   handoffType,     // 0=FarmToProcessor, 1=ProcessorToDistrib,
+                           // 2=DistribToRetailer, 3=CrossBorderExport
+  uint40  timestamp
+);
+
+// Condition data is stored off-chain (IPFS) and anchored by conditionHash
+// Consumers can download the full condition report and verify the hash</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Anomaly Detection and Flagging</h4>
+                        <p>Anomaly flags are emitted when condition data at a handoff exceeds defined thresholds. The contract checks thresholds autonomously when <code>acceptHandoff</code> is called with out-of-range data:</p>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:12px; border-radius:6px; font-size:0.78em; overflow-x:auto; white-space:pre;">Anomaly codes (auto-emitted):
+  TEMP_HIGH   - temperature &gt; threshold for crop type
+  TEMP_LOW    - temperature &lt; threshold for cold chain items
+  WEIGHT_LOSS - weight drop &gt;5% beyond processing tolerance
+  DELAY       - handoff timestamp &gt;72h after previous handoff
+  CHAIN_BREAK - receiving address not registered as supply chain partner
+
+event AnomalyFlagged(
+  uint256 indexed batchTokenId,
+  string  anomalyCode,
+  bytes32 conditionHash,
+  uint40  timestamp
+);
+// AnomalyFlagged is permanent. It cannot be removed, overridden,
+// or hidden. It appears on every consumer verification page.</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Cross-Border Export Tracking</h4>
+                        <p>For exports to EU/US markets, an additional <code>handoffType=3</code> event records customs clearance. The exporting party calls <code>acceptHandoff</code> with a <code>conditionHash</code> anchoring to an IPFS document containing:</p>
+                        <ul style="font-size:0.97em; margin-left:18px; line-height:1.7;">
+                            <li>Phytosanitary certificate hash</li>
+                            <li>Customs declaration number (hashed)</li>
+                            <li>Port of departure + destination country codes</li>
+                            <li>EUDR due diligence reference number (if applicable)</li>
+                        </ul>
+                        <p>This creates an auditable EUDR compliance trail directly from the farm GPS coordinates to the import declaration, satisfying Article 9 of EU Regulation 2023/1115.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Custody Query Interface</h4>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:12px; border-radius:6px; font-size:0.78em; overflow-x:auto; white-space:pre;">// Read the full custody chain for any batch (free, no wallet)
+function getFullCustodyChain(uint256 batchTokenId)
+  external view
+  returns (CustodyRecord[] memory records);
+
+struct CustodyRecord {
+  address  from;
+  address  to;
+  bytes32  conditionHash;
+  bytes32  locationHash;
+  uint8    handoffType;
+  uint40   timestamp;
+  bool     hasAnomaly;
+}
+
+// Consumer frontend calls this via BSC public JSON-RPC
+// No gas cost, no wallet, no authentication</pre>
+                    </div>
+                </div>
+
+                <h3>4. QR Code Consumer Verification System</h3>
+                <p>The <code>XGTVerification</code> contract manages QR code registration, scan event logging, and the read interface used by the consumer-facing static web page. The system is designed to require zero crypto knowledge from end consumers.</p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>QR Code Specification</h4>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:12px; border-radius:6px; font-size:0.78em; overflow-x:auto; white-space:pre;">QR Payload (URL encoded):
+  https://verify.excaliburglobal.farm/batch/[BATCH_ID]?c=[CONTRACT_ADDR]
+
+Example:
+  https://verify.excaliburglobal.farm/batch/
+  XGB-XGF-CM-LIT-00142-SOY-20260310-001
+  ?c=0x[XGTHarvestBatch contract address]
+
+QR Format:  QR Code version 5+ (handles 64-char URL minimum)
+Error Correction: Level M (15% damage tolerance)
+Module size: minimum 2mm for 300dpi print (standard food label)
+NFC optional: NTAG213 chip with same URL for premium products</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Consumer Verification Page - Data Sources</h4>
+                        <pre style="background:#1e2a3a; color:#a8d8a8; padding:12px; border-radius:6px; font-size:0.78em; overflow-x:auto; white-space:pre;">Page loads (static HTML/JS from IPFS):
+  1. Parse BATCH_ID and CONTRACT_ADDR from URL
+  2. Call XGTHarvestBatch.getBatchData(batchId) via BSC RPC
+     -> farmTokenId, sustainabilityScore, weightKg, harvestDate
+  3. Call XGTFarmRegistry.getFarmData(farmTokenId) via BSC RPC
+     -> farmId, country, ipfsCID
+  4. Fetch IPFS document at ipfsCID
+     -> farm name, GPS centroid, cooperative name, NDVI image CID
+  5. Call XGTSupplyChain.getFullCustodyChain(batchTokenId)
+     -> full handoff history with timestamps and anomaly flags
+  6. Render Google Maps embed at farm GPS centroid
+  7. Display BSCScan link to token for independent verification
+
+Total RPC calls: 3 (batched as multicall)
+Page load target: &lt;2 seconds on 3G</pre>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Consumer Display - What the User Sees</h4>
+                        <ul style="font-size:0.97em; margin-left:18px; line-height:1.8;">
+                            <li><strong>Farm card:</strong> Farm ID, country, region, registered date, satellite NDVI image</li>
+                            <li><strong>Harvest card:</strong> Crop type, harvest date, weight, sustainability score (color-coded badge)</li>
+                            <li><strong>Supply chain timeline:</strong> Each handoff with actor type, timestamp, condition summary, and anomaly flag if present</li>
+                            <li><strong>Verification badge:</strong> Green checkmark if no anomalies; yellow warning if anomaly flags exist</li>
+                            <li><strong>Independent verify link:</strong> Direct BSCScan URL to the on-chain token for technical users</li>
+                            <li><strong>No login, no wallet, no app download required</strong> - works on any browser that can scan a QR code</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Counterfeit and Duplication Prevention</h4>
+                        <p><strong>QR uniqueness:</strong> Each Batch ID maps to exactly one HBT token on-chain. Duplicating the QR label still points to the same blockchain record, which shows the original farm origin - making product substitution immediately visible.</p>
+                        <p><strong>Scan logging:</strong> The <code>XGTVerification</code> contract logs <code>QRScanned(batchId, scannerIP_hash, timestamp)</code> events. Abnormal scan patterns (e.g., 10,000 scans in 1 hour from the same IP range) trigger an off-chain alert to the Excalibur operations team.</p>
+                        <p><strong>Retailer lock:</strong> Once a retailer calls <code>activateQR(batchTokenId)</code>, the QR is live. If the same QR is scanned before activation, the verification page shows "Product not yet in retail custody" - alerting to a potential supply chain leak.</p>
+                    </div>
+                </div>
+
+                <h3>5. Full System Architecture Diagram</h3>
+                <pre style="background: #1e2a3a; color: #a8d8a8; padding: 28px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 0.78em; line-height: 1.7; overflow-x: auto; white-space: pre;">
++===============================================================================================+
+|                      EXCALIBUR GLOBAL - AGRICULTURAL TRACEABILITY PROTOCOL                    |
++===============================================================================================+
+
+ [FARMER LAYER - Mobile App, offline-capable]
+ +--------------------+    +--------------------+    +--------------------+
+ | Farm Registration  |    | Harvest Logging    |    | Handoff Signing    |
+ | - GPS boundary     |    | - Crop data        |    | - QR scan confirm  |
+ | - KYC hash         |    | - Soil/water data  |    | - Condition report |
+ | - Cooperative ID   |    | - Weight estimate  |    | - Location hash    |
+ +--------|-----------+    +---------|----------+    +---------|----------+
+          | ipfsCID+gpsHash          | ipfsCID+fields          | conditionHash
+          v                          v                          v
+ +===============================================================================================+
+ |                              BNB SMART CHAIN (BSC) - ON-CHAIN LAYER                          |
+ |                                                                                               |
+ |  +---------------------+   mintBatch()   +---------------------+   acceptHandoff()           |
+ |  | XGTFarmRegistry.sol |--------------->| XGTHarvestBatch.sol  |------------------+          |
+ |  | ERC-721 Farm NFT    |                | ERC-721 Batch NFT    |   splitBatch()   |          |
+ |  | - farmId string     |                | - farmTokenId ref    |<-----------------+          |
+ |  | - gpsHash bytes32   |                | - sustainScore uint8 |                             |
+ |  | - ipfsCID bytes32   |                | - weightKg uint32    |                             |
+ |  | - signers[]         |                | - cropCode uint8     |   +-------------------+     |
+ |  +---------------------+                | - qrActivated bool   |-->| XGTSupplyChain    |     |
+ |           |                             +---------------------+    | TransferEvents    |     |
+ |           | FarmRegistered event                                    | - HandoffAccepted |     |
+ |           v                                                         | - AnomalyFlagged  |     |
+ |  +---------------------+                                           | - BatchSplit      |     |
+ |  | XGTVerification.sol |<--- activateQR() ------+                  +--------+----------+     |
+ |  | - qrRegistry        |                        |                           |                |
+ |  | - scanLog events    |                         |                           v                |
+ |  +---------------------+                    Retailer              +-------------------+      |
+ |                                                                    | XGTRewards.sol    |      |
+ |                                                                    | auto-distributes  |      |
+ |                                                                    | XGT to farmer,    |      |
+ |                                                                    | partner, retailer |      |
+ |                                                                    +-------------------+      |
+ +===============================================================================================+
+          |                          |                          |
+          | GPSVerified oracle req   | NDVI at harvest req      | reads (no gas)
+          v                          v                          v
+ +--------------------+    +--------------------+    +--------------------+
+ | Chainlink Oracle   |    | IPFS (Pinata +     |    | CONSUMER           |
+ | - Sentinel-2 NDVI  |    | local node)        |    | scan QR code       |
+ | - Landsat-9 cover  |    | - Farm JSON docs   |    | static page on     |
+ | - GPS land-use     |    | - Harvest records  |    | IPFS loads via     |
+ |   classification   |    | - Satellite images |    | BSC public RPC     |
+ +--------------------+    | - Condition rpts   |    |                    |
+                            +--------------------+    | Shows:             |
+                                                      | - Farm origin map  |
+ NETWORKS:                                            | - Sustainability   |
+   BSC: 2000+ TPS, &lt;$0.01/tx                          |   score badge      |
+   IPFS: Pinata + local redundancy                    | - Custody timeline |
+   Oracles: Chainlink DON                             | - Anomaly flags    |
+   Satellite: Sentinel-2+Landsat-9 (open data)        | - BSCScan link     |
+   Mobile: React Native, offline-first                +--------------------+
+   Consumer UI: Static HTML on IPFS, 3G-capable
+
+ COMPLETE DATA FLOW:
+   Farmer registers -> Farm NFT minted -> Chainlink verifies GPS+NDVI
+   -> 500 XGT reward to farmer -> Farmer logs harvest in app
+   -> Batch NFT minted with sustainability score -> 100+ XGT reward
+   -> Batch moves: Farm -> Processor -> Distributor -> Retailer
+   -> Each step: acceptHandoff() signed -> 25 XGT to receiving partner
+   -> Retailer calls activateQR() -> QR code goes live
+   -> Consumer scans -> static page reads BSC directly
+   -> Full provenance displayed in &lt;2 seconds, no wallet needed
+                </pre>
+
+                <div class="highlight-box" style="margin-top: 25px;">
+                    <h4>Scalability and Cost Analysis</h4>
+                    <p><strong>Throughput:</strong> BNB Smart Chain supports 2,000+ TPS at sub-$0.01 gas per transaction. A farm with 50 harvests per year generates approximately 250 on-chain transactions (registration + 50 batches + 200 handoffs). At $0.01 each, total annual on-chain cost per farm is approximately $2.50 - economically viable at any scale.</p>
+                    <p><strong>Storage:</strong> IPFS document storage via Pinata is approximately $0.15 per GB pinned. A full farm record with satellite images is approximately 2MB per year, making storage costs negligible at scale.</p>
+                    <p><strong>Offline resilience:</strong> The React Native mobile app queues all transactions locally when the device is offline. On connectivity restore, transactions are submitted in order with sequence-validated nonces to prevent double-submission. Farmers in areas with weekly connectivity (common in rural Cameroon and Liberia) can still participate fully.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Market Opportunity</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="number">$10B+</div>
+                        <div class="label">Global Sustainability Reporting Market</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">$100B+</div>
+                        <div class="label">Projected Environmental Market by 2030</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">$1B+</div>
+                        <div class="label">Marine Ecosystem Assessment Market</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">$15B+</div>
+                        <div class="label">Agricultural Sustainability Market</div>
+                    </div>
+                </div>
+                
+                <h3>Competitive Advantages</h3>
+                <ul style="font-size: 1.1em; margin-left: 20px;">
+                    <li><strong>Government Compliance:</strong> Official methodology implementation</li>
+                    <li><strong>Cost Effectiveness:</strong> Fraction of traditional consultant fees</li>
+                    <li><strong>Scientific Accuracy:</strong> 90%+ validation against real-world data</li>
+                    <li><strong>Accessibility:</strong> Simple interface with powerful results</li>
+                    <li><strong>Verification Ready:</strong> Built for professional audit integration</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Development Roadmap</h2>
+                
+                <div class="roadmap">
+                    <div class="roadmap-item">
+                        <div class="roadmap-status status-complete"></div>
+                        <div>
+                            <h4>COMPLETE - Land MRV Tool - Production Launch</h4>
+                            <p>Government-compliant sustainability assessment with multi-crop system and Google Sheets integration</p>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <div class="roadmap-status status-complete"></div>
+                        <div>
+                            <h4>COMPLETE - WordPress Integration</h4>
+                            <p>Seamless deployment on WordPress sites with professional reporting</p>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <div class="roadmap-status status-progress"></div>
+                        <div>
+                            <h4>IN PROGRESS - Blue Carbon Tool Development</h4>
+                            <p>Marine ecosystem monitoring with 10,000+ species database</p>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <div class="roadmap-status status-progress"></div>
+                        <div>
+                            <h4>IN PROGRESS - Tier 2 Advanced Verification</h4>
+                            <p>Paid professional services with onsite surveys and satellite imagery</p>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <div class="roadmap-status status-planned"></div>
+                        <div>
+                            <h4>PLANNED - Government Partnerships</h4>
+                            <p>Official adoption by USDA, EPA, and international agencies</p>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <div class="roadmap-status status-planned"></div>
+                        <div>
+                            <h4>PLANNED - Global Market Expansion</h4>
+                            <p>International rollout and multi-language support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Token Economics</h2>
+                <p style="background: linear-gradient(135deg,#f0fff4,#e6f7ff); padding: 15px; border-left: 4px solid #3498db; margin-bottom: 20px; border-radius: 4px;">
+                    <strong>XGT Token Highlights:</strong> BEP-20 standard on BNB Smart Chain &bull; 40B minted at deployment (4B liquidity + 16B team + 20B mining reserve) &bull; 40B available through public PoW mining &bull; 80B hard cap enforced in contract &bull; <strong>Ownership fully renounced</strong> - no admin control by any address including the deployer &bull; No owner mint function &bull; No burns &bull; Platform utility &amp; rewards &bull; Traded on PancakeSwap (BSC) and Camelot DEX (Arbitrum). See footer for full regulatory disclosures.
+                </p>
+
+                <h3>BNB Chain (BSC) - Primary Deployment</h3>
+                <div class="highlight-box">
+                    <p><strong>Network:</strong> BNB Smart Chain</p>
+                    <p><strong>Standard:</strong> BEP-20</p>
+                    <p><strong>Contract:</strong> 0x654E38A4516F5476D723D770382A5EaF8Bae0e0D</p>
+                    <p><strong>Contract Hard Cap:</strong> 80,000,000,000 XGT (80 billion - enforced in contract code)</p>
+                    <p><strong>Minted at Deployment:</strong> 40,000,000,000 XGT (40 billion)</p>
+                    <p><strong>&nbsp;&nbsp;↳ Initial Liquidity:</strong> 4,000,000,000 XGT (4 billion)</p>
+                    <p><strong>&nbsp;&nbsp;↳ Team/Development:</strong> 16,000,000,000 XGT (16 billion)</p>
+                    <p><strong>&nbsp;&nbsp;↳ Mining Reserve (held):</strong> 20,000,000,000 XGT (20 billion - held for mining reward distribution)</p>
+                    <p><strong>Available Through Public PoW Mining:</strong> 40,000,000,000 XGT (40 billion - no owner mint, public only)</p>
+                    <p><strong>Ownership:</strong> <span style="color:#155724; font-weight:700;">Fully Renounced</span> - no address, including the deployer, retains administrative control</p>
+                    <p><strong>BscScan Write Contract:</strong> Tab is visible on BscScan but cannot be used to alter the token, mint supply, or modify any parameter. All privileged functions are permanently inaccessible</p>
+                    <p><strong>DEX:</strong> PancakeSwap / BiSwap</p>
+                </div>
+
+                <div class="stats-grid" style="margin: 20px 0;">
+                    <div class="stat-card">
+                        <div class="number">80B</div>
+                        <div class="label">Hard Cap (Contract Enforced)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">40B</div>
+                        <div class="label">Minted at Deployment</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">40B</div>
+                        <div class="label">Available Through Public Mining (PoW)</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #1a7a3c 0%, #28a745 100%);">
+                        <div class="number" style="font-size:1.6em;">Renounced</div>
+                        <div class="label">Ownership - No Admin Control by Any Address</div>
+                    </div>
+                </div>
+
+                <div style="background:#f0fff4; border:2px solid #28a745; border-radius:8px; padding:22px 24px; margin:0 0 25px 0;">
+                    <h4 style="color:#155724; margin-bottom:14px; font-size:1.1em;">&#x2714; Verified: Ownership Renounced. No Owner Mint. No Inflation. Immutable Hard Cap.</h4>
+
+                    <p style="margin:0 0 14px 0;">The XGT token contract on BNB Smart Chain is publicly deployed and independently verifiable. The following facts are provable by reading the contract source code directly - no trust in Excalibur Global required.</p>
+
+                    <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse:collapse; font-size:0.93em; margin-bottom:14px;">
+                        <thead>
+                            <tr style="background:#155724; color:white;">
+                                <th style="padding:9px 13px; text-align:left;">Claim</th>
+                                <th style="padding:9px 13px; text-align:left;">Contract Evidence</th>
+                                <th style="padding:9px 13px; text-align:left;">Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom:1px solid #c3e6cb;">
+                                <td style="padding:9px 13px;"><strong>Ownership fully renounced</strong></td>
+                                <td style="padding:9px 13px;">Contract owner is set to the zero address (<code>0x0000...0000</code>). No wallet, including the original deployer, can call owner-restricted functions. The Write Contract tab on BscScan is visible but all privileged functions revert unconditionally.</td>
+                                <td style="padding:9px 13px; color:#155724;"><strong>&#x2714; Zero admin control, permanently</strong></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid #c3e6cb; background:#f9fff9;">
+                                <td style="padding:9px 13px;"><strong>No owner mint function</strong></td>
+                                <td style="padding:9px 13px;">Contract contains <code>mine()</code> only - callable by ANY address, not restricted to owner. There is no <code>mint(address, uint)</code> or <code>ownerMint()</code> function.</td>
+                                <td style="padding:9px 13px; color:#155724;"><strong>&#x2714; Owner cannot create tokens</strong></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid #c3e6cb; background:#f9fff9;">
+                                <td style="padding:9px 13px;"><strong>Hard cap enforced in code</strong></td>
+                                <td style="padding:9px 13px;"><code>MAX_SUPPLY = 80,000,000,000 * 10**18</code> is an immutable constant. <code>mine()</code> reverts with <code>"Max supply reached"</code> if <code>totalSupply() + amount &gt; MAX_SUPPLY</code>. No burns have occurred.</td>
+                                <td style="padding:9px 13px; color:#155724;"><strong>&#x2714; 80B hard cap enforced in code</strong></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid #c3e6cb;">
+                                <td style="padding:9px 13px;"><strong>Post-cap: minting permanently stops</strong></td>
+                                <td style="padding:9px 13px;">Once <code>totalSupply()</code> reaches <code>MAX_SUPPLY</code>, every call to <code>mine()</code> reverts. No upgrade path, no proxy, no admin bypass exists in the contract.</td>
+                                <td style="padding:9px 13px; color:#155724;"><strong>&#x2714; Permanently non-inflationary at 80B hard cap</strong></td>
+                            </tr>
+                            <tr style="background:#f9fff9;">
+                                <td style="padding:9px 13px;"><strong>40B minted at deployment, no burns</strong></td>
+                                <td style="padding:9px 13px;"><code>INITIAL_SUPPLY = 40,000,000,000 * 10**18</code> minted to deployer in constructor. No burns have occurred. The remaining 40B gap to <code>MAX_SUPPLY</code> is reachable only via public <code>mine()</code>.</td>
+                                <td style="padding:9px 13px; color:#155724;"><strong>&#x2714; 40B minted; totalSupply verifiable on BSCScan</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+
+                    <div style="background:#d4edda; border-radius:5px; padding:13px 16px; font-size:0.93em;">
+                        <strong>Verify independently - no account required:</strong><br>
+                        Contract address: <code>0x654E38A4516F5476D723D770382A5EaF8Bae0e0D</code><br>
+                        BSCScan source: <a href="https://bscscan.com/address/0x654E38A4516F5476D723D770382A5EaF8Bae0e0D#code" target="_blank" style="color:#155724; font-weight:600;">bscscan.com - Read Contract &gt; totalSupply, MAX_SUPPLY, INITIAL_SUPPLY</a><br>
+                        <span style="color:#555; font-size:0.9em;">Any person can call <code>totalSupply()</code>, <code>MAX_SUPPLY()</code>, and search the ABI for mint functions via BSCScan Read Contract tab - no wallet, no account needed.</span>
+                    </div>
+                </div>
+
+                <h3>Arbitrum One - Minimal Deployment (Ethereum L2)</h3>
+                <div class="highlight-box">
+                    <p><strong>Network:</strong> Arbitrum One (Ethereum Layer 2)</p>
+                    <p><strong>Standard:</strong> ERC-20</p>
+                    <p><strong>Contract:</strong> 0x7B4ac6134C0e7792F5c6c6155240C937d1189736</p>
+                    <p><strong>Supply:</strong> 400,000 XGT (independent supply from BSC)</p>
+                    <p><strong>DEX:</strong> Camelot Exchange</p>
+                    <p><strong>Note:</strong> Arbitrum One settles on Ethereum mainnet, providing Ethereum-based security with low fees.</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>Excalibur Global - Company Sustainability Projects</h2>
+                <p style="background: #f8d7da; padding: 14px 18px; border-left: 4px solid #c0392b; border-radius: 4px; margin-bottom: 18px;">
+                    <strong>Company Projects Notice:</strong> The environmental initiatives listed below are <strong>Excalibur Global company projects only.</strong> They are not connected to XGT token ownership, mining, or transfer. Token holders have no rights or claims related to these projects. These activities are described here for company background only.
+                </p>
+                <p>Excalibur Global is independently developing the following environmental land-use projects. All figures are company estimates governed by IPCC 2019, ISO 14064, and USDA/EPA scientific frameworks:</p>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>USA - Sustainable Agriculture</h4>
+                        <p>Est. 100,000 tons CO₂ sequestration via regenerative agriculture practices.<br><small><a href="https://excaliburglobal.farm" target="_blank">excaliburglobal.farm</a></small></p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Cameroon - Palm Plantation Restoration</h4>
+                        <p>Est. 200,000 tons CO₂ via sustainable land restoration practices.<br><small><a href="https://excaliburglobal.farm" target="_blank">excaliburglobal.farm</a></small></p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Liberia - Forest Conservation</h4>
+                        <p>Est. 500,000 tons CO₂ via forest preservation programs.<br><small><a href="https://excaliburglobal.farm" target="_blank">excaliburglobal.farm</a></small></p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Brazil - Conservation Areas</h4>
+                        <p>Est. 1,200,000 tons CO₂ via protected conservation area management.<br><small><a href="https://excaliburglobal.farm" target="_blank">excaliburglobal.farm</a></small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact">
+            <h3>Contact Information</h3>
+            <p><strong>Luis Reis - Founder</strong></p>
+            <p>Excalibur Global Trading USA LLC</p>
+            <p>Email: contact@excaliburglobal.farm</p>
+            <p>Phone: +1 219 669-1206</p>
+            <p>Website: excaliburglobal.farm</p>
+            <p>Twitter: @XGTToken</p>
+            <p style="margin-top: 20px; font-size: 0.95em;">
+                <a href="/privacy-policy" style="color: white; margin: 0 10px;">Privacy Policy</a> |
+                <a href="/terms-of-service" style="color: white; margin: 0 10px;">Terms of Service</a> |
+                <a href="https://excaliburglobal.farm" style="color: white; margin: 0 10px;">excaliburglobal.farm</a>
+            </p>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 30px; text-align: center; color: #333;">
+            <p style="font-size: 0.9em; line-height: 1.6; max-width: 1000px; margin: 0 auto;">
+                <strong>Legal Disclaimers:</strong><br><br>
+                <strong>Regulatory Notice:</strong> XGT is a utility token whose value derives from platform access and ecosystem participation. This whitepaper does not constitute an offer to sell or solicitation to buy securities. XGT has not been registered with the U.S. Securities and Exchange Commission or any regulatory body. Cryptocurrency tokens are highly volatile. All participants should conduct independent research and consult qualified advisors before acquiring any digital asset. Compliance with local laws is the sole responsibility of the participant.<br><br>
+                <strong>Company Initiatives:</strong> Environmental project information in this document describes Excalibur Global company activities only, governed by IPCC 2019, ISO 14064, and USDA/EPA standards. These initiatives are not connected to XGT token rights or obligations. All project figures are estimates. Full details: <a href="https://excaliburglobal.farm">excaliburglobal.farm</a>.<br><br>
+                <strong>Information Accuracy:</strong> This whitepaper is for informational purposes only. Forward-looking statements involve risks and uncertainties. Actual results may differ materially from projections. No guarantee is made regarding the accuracy or completeness of information. Do not rely solely on this document for investment or business decisions.<br><br>
+                <strong>Risk Disclosure:</strong> Cryptocurrency investments carry substantial risk of loss. Past performance is not indicative of future results. Regulatory changes may impact token utility and value. Technology risks include smart contract vulnerabilities and blockchain network issues. Market risks include liquidity constraints and price volatility.
+            </p>
+            <p style="font-size: 0.85em; color: #777; margin-top: 20px;">
+                &copy; 2025 Excalibur Global Trading USA LLC. All rights reserved.<br>
+                Version 1.0 | Last Updated: November 2025
+            </p>
+        </div>
+    </div>
+</body>
+</html>
